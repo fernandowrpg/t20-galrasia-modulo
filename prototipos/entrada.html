@@ -1,0 +1,72 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<title>Protótipo — Tela de entrada de Galrasia</title>
+<link href="https://fonts.googleapis.com/css2?family=Signika:wght@400;600&family=Amiri:wght@700&family=Oswald:wght@600&display=swap" rel="stylesheet">
+<style>
+/* Imitação aproximada da tela /join do Foundry v13. Do Foundry vêm o layout, as fontes e os painéis;
+   o que muda de verdade é só a imagem de fundo do mundo e o conteúdo da "World Description". */
+* { box-sizing: border-box; }
+html, body { margin: 0; height: 100%; }
+body {
+  font-family: Signika, sans-serif; color: #efe6d8;
+  background: #000 url("fundo-entrada.webp") center / cover no-repeat;
+  display: flex; flex-direction: column; align-items: center; overflow: auto;
+}
+.logo { margin-top: 36px; font-family: Oswald, sans-serif; font-size: 66px; letter-spacing: 1px; color: #f4ecdc;
+  text-shadow: 0 0 12px #000, 0 3px 6px #000; position: relative; }
+.logo::after { content: ""; position: absolute; left: 92px; top: 4px; width: 40px; height: 40px; background: #c8452a;
+  clip-path: polygon(50% 0, 100% 25%, 100% 75%, 50% 100%, 0 75%, 0 25%); opacity: .85; z-index: -1; }
+.grade { display: grid; grid-template-columns: 510px 510px; gap: 18px; margin-top: 22px; }
+.col { display: flex; flex-direction: column; gap: 18px; }
+.painel { background: rgba(11, 10, 19, .9); border: 1px solid #2c2b36; border-radius: 6px; padding: 14px 24px 22px; }
+.painel h2 { font-family: Amiri, serif; font-size: 30px; font-weight: 700; margin: 4px 0 18px; display: flex; align-items: center; gap: 10px; }
+.painel h2::before, .painel h2::after { content: ""; flex: 1; height: 1px; background: #c9a03b; }
+.campo { display: flex; align-items: center; gap: 10px; margin-bottom: 14px; }
+.campo span { width: 14px; color: #aaa; }
+.campo div { flex: 1; height: 32px; border-radius: 4px; background: #2d2c36; }
+.campo div.senha { background: #6e6a00; }
+.botao { height: 38px; background: #ee9b3a; color: #1a1209; border-radius: 3px; display: flex; align-items: center; justify-content: center; font-size: 14px; letter-spacing: .03em; }
+.linha { display: flex; justify-content: space-between; font-size: 14px; font-weight: 600; margin: 10px 0 22px; }
+.versao { font-family: Amiri, serif; font-size: 26px; margin: 26px 0 30px; text-shadow: 0 2px 4px #000; }
+/* A "World Description": aqui entra o HTML do mundo, com o estilo padrão do Foundry */
+.descricao { font-size: 15px; line-height: 1.45; max-height: 560px; overflow: auto; }
+.descricao h3 { font-family: Amiri, serif; font-size: 22px; margin: 16px 0 6px; color: #f3d6a0; border-bottom: 1px solid #4a3a26; }
+.descricao p { margin: 0 0 10px; }
+.descricao ul { margin: 0 0 10px; padding-left: 20px; }
+.descricao blockquote { margin: 4px 0 12px; padding: 4px 12px; border-left: 3px solid #c9a03b; font-style: italic; color: #e7d4b1; }
+.descricao img { max-width: 100%; border-radius: 4px; }
+.descricao strong { color: #f6e3b8; }
+.aviso { position: fixed; left: 12px; bottom: 12px; background: rgba(0,0,0,.75); padding: 8px 12px; border-radius: 6px; font-size: 13px; max-width: 420px; }
+</style>
+</head>
+<body>
+<div class="logo">GALRASIA</div>
+<div class="grade">
+  <div class="col">
+    <section class="painel"><h2>Join Game Session</h2>
+      <div class="campo"><span>👤</span><div></div></div>
+      <div class="campo"><span>🔑</span><div class="senha"></div></div>
+      <div class="botao">✓ JOIN GAME SESSION</div>
+    </section>
+    <section class="painel"><h2>Game Details</h2>
+      <div class="linha"><span>🕑 Next Session</span><span>Friday, Nov 27, 9:00 PM GMT-3</span></div>
+      <div class="linha"><span>👥 Current Players</span><span>0 / 8</span></div>
+    </section>
+    <section class="painel"><h2>Return to Setup</h2>
+      <div class="campo"><span>🔑</span><div class="senha"></div></div>
+      <div class="botao">🔒 RETURN TO SETUP</div>
+    </section>
+  </div>
+  <section class="painel"><h2>World Description</h2>
+    <div class="descricao" id="descricao"></div>
+  </section>
+</div>
+<div class="versao">Version 13 Build 351</div>
+<div class="aviso">Protótipo: imita a tela de entrada do Foundry v13. Mudam só a <strong>imagem de fundo</strong> e a <strong>descrição do mundo</strong>.</div>
+<script>
+fetch("descricao-mundo.html").then(r => r.text()).then(t => document.getElementById("descricao").innerHTML = t);
+</script>
+</body>
+</html>

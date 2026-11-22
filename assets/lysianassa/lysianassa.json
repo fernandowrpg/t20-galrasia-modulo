@@ -1,0 +1,773 @@
+{
+ "nome": "Lysianassa",
+ "largura": 4000,
+ "altura": 3000,
+ "grade": 100,
+ "regioes": [
+  {
+   "id": "ancoradouro",
+   "nome": "Ancoradouro das Raízes",
+   "cor": "amarelo",
+   "descricao": "O porto da cidade e a lagoa turquesa. Píeres crescidos de raízes de mangue recebem os navios vindos de Nova Malpetrim.",
+   "poligono": [
+    [
+     2700,
+     860
+    ],
+    [
+     3150,
+     700
+    ],
+    [
+     3480,
+     700
+    ],
+    [
+     3500,
+     1300
+    ],
+    [
+     3480,
+     1700
+    ],
+    [
+     3430,
+     2400
+    ],
+    [
+     3100,
+     2500
+    ],
+    [
+     2560,
+     2250
+    ],
+    [
+     2620,
+     1880
+    ],
+    [
+     2520,
+     1500
+    ],
+    [
+     2620,
+     1180
+    ]
+   ],
+   "rotulo": [
+    3020,
+    1500
+   ]
+  },
+  {
+   "id": "mercado",
+   "nome": "Mercado das Copas",
+   "cor": "amarelo",
+   "descricao": "Plataformas de comércio sob as copas, entre o porto e o bosque sagrado. Tudo que entra e sai de Galrasia passa por aqui.",
+   "poligono": [
+    [
+     1750,
+     760
+    ],
+    [
+     2100,
+     880
+    ],
+    [
+     2700,
+     860
+    ],
+    [
+     2620,
+     1180
+    ],
+    [
+     2520,
+     1500
+    ],
+    [
+     1950,
+     1160
+    ],
+    [
+     1520,
+     1080
+    ]
+   ]
+  },
+  {
+   "id": "folhas-novas",
+   "nome": "Folhas Novas",
+   "cor": "amarelo",
+   "descricao": "O bairro dos estrangeiros. Casas-casulo que as Oqamm fizeram brotar para os colonos que chegaram nos primeiros navios.",
+   "poligono": [
+    [
+     1900,
+     330
+    ],
+    [
+     2500,
+     380
+    ],
+    [
+     2900,
+     450
+    ],
+    [
+     3150,
+     700
+    ],
+    [
+     2700,
+     860
+    ],
+    [
+     2100,
+     880
+    ],
+    [
+     1750,
+     760
+    ]
+   ]
+  },
+  {
+   "id": "arvore-mae",
+   "nome": "Bosque da Árvore-Mãe",
+   "cor": "verde",
+   "descricao": "O coração vivo da cidade: uma ilhota no rio dominada por uma árvore colossal, santuário de Allihanna.",
+   "poligono": [
+    [
+     1160,
+     1100
+    ],
+    [
+     1520,
+     1080
+    ],
+    [
+     1950,
+     1160
+    ],
+    [
+     2520,
+     1500
+    ],
+    [
+     1880,
+     1920
+    ],
+    [
+     1160,
+     1900
+    ],
+    [
+     1140,
+     1500
+    ]
+   ]
+  },
+  {
+   "id": "mascaras",
+   "nome": "Recanto das Máscaras",
+   "cor": "verde",
+   "descricao": "Bosque fechado onde vivem e meditam as druidas Oqamm. Visitantes só entram a convite.",
+   "poligono": [
+    [
+     1160,
+     1900
+    ],
+    [
+     1880,
+     1920
+    ],
+    [
+     1950,
+     2280
+    ],
+    [
+     1900,
+     2800
+    ],
+    [
+     1400,
+     2650
+    ],
+    [
+     1050,
+     2300
+    ],
+    [
+     1300,
+     2200
+    ]
+   ]
+  },
+  {
+   "id": "oficinas",
+   "nome": "Oficinas da Seiva",
+   "cor": "amarelo",
+   "descricao": "Ateliês de artesãos, curtumes e o único lugar da cidade onde se trabalha metal — trazido do continente.",
+   "poligono": [
+    [
+     1880,
+     1920
+    ],
+    [
+     2520,
+     1500
+    ],
+    [
+     2620,
+     1880
+    ],
+    [
+     2560,
+     2250
+    ],
+    [
+     3100,
+     2500
+    ],
+    [
+     2700,
+     2650
+    ],
+    [
+     2300,
+     2850
+    ],
+    [
+     1900,
+     2800
+    ],
+    [
+     1950,
+     2280
+    ]
+   ]
+  },
+  {
+   "id": "currais",
+   "nome": "Currais de Feras",
+   "cor": "vermelho",
+   "descricao": "Cercados de madeira viva onde ficam as feras capturadas à espera de embarque. Barulhento, fedorento e perigoso.",
+   "poligono": [
+    [
+     1000,
+     700
+    ],
+    [
+     1350,
+     420
+    ],
+    [
+     1900,
+     330
+    ],
+    [
+     1750,
+     760
+    ],
+    [
+     1520,
+     1080
+    ],
+    [
+     1160,
+     1100
+    ],
+    [
+     1250,
+     820
+    ]
+   ]
+  },
+  {
+   "id": "muralha",
+   "nome": "Muralha Viva",
+   "cor": "verde",
+   "descricao": "A muralha de troncos entrelaçados que protege o lado da selva, com o Portão do Rio e o Portão da Selva.",
+   "poligono": [
+    [
+     1000,
+     700
+    ],
+    [
+     900,
+     1100
+    ],
+    [
+     880,
+     1500
+    ],
+    [
+     900,
+     1900
+    ],
+    [
+     1050,
+     2300
+    ],
+    [
+     1300,
+     2200
+    ],
+    [
+     1160,
+     1900
+    ],
+    [
+     1140,
+     1500
+    ],
+    [
+     1160,
+     1100
+    ],
+    [
+     1250,
+     820
+    ]
+   ],
+   "rotulo": [
+    1030,
+    1650
+   ]
+  },
+  {
+   "id": "selva",
+   "nome": "Selva Além da Muralha",
+   "cor": "vermelho",
+   "descricao": "O Inferno Verde começa a um passo do portão. Árvores ciclópicas, lagartos-terror e tribos que não querem visitantes.",
+   "poligono": [
+    [
+     0,
+     0
+    ],
+    [
+     2500,
+     0
+    ],
+    [
+     2500,
+     380
+    ],
+    [
+     1900,
+     330
+    ],
+    [
+     1350,
+     420
+    ],
+    [
+     1000,
+     700
+    ],
+    [
+     900,
+     1100
+    ],
+    [
+     880,
+     1500
+    ],
+    [
+     900,
+     1900
+    ],
+    [
+     1050,
+     2300
+    ],
+    [
+     1400,
+     2650
+    ],
+    [
+     1900,
+     2800
+    ],
+    [
+     2300,
+     2850
+    ],
+    [
+     2300,
+     3000
+    ],
+    [
+     0,
+     3000
+    ]
+   ],
+   "rotulo": [
+    480,
+    1250
+   ]
+  },
+  {
+   "id": "rochedo",
+   "nome": "Rochedo dos Pteros",
+   "cor": "verde",
+   "descricao": "Penhascos ao norte do porto onde casais de pteros fazem seus ninhos e vigiam o mar.",
+   "poligono": [
+    [
+     2500,
+     0
+    ],
+    [
+     3350,
+     0
+    ],
+    [
+     3420,
+     350
+    ],
+    [
+     3480,
+     700
+    ],
+    [
+     3150,
+     700
+    ],
+    [
+     2900,
+     450
+    ],
+    [
+     2500,
+     380
+    ]
+   ],
+   "rotulo": [
+    3000,
+    180
+   ]
+  },
+  {
+   "id": "enseada",
+   "nome": "Enseada da Maré Torta",
+   "cor": "vermelho",
+   "descricao": "Uma angra escondida ao sul, fora da muralha, onde atracam barcos que preferem não passar pela capitania.",
+   "poligono": [
+    [
+     2300,
+     2850
+    ],
+    [
+     2700,
+     2650
+    ],
+    [
+     3100,
+     2500
+    ],
+    [
+     3430,
+     2400
+    ],
+    [
+     3330,
+     3000
+    ],
+    [
+     2300,
+     3000
+    ]
+   ],
+   "rotulo": [
+    2950,
+    2880
+   ]
+  },
+  {
+   "id": "mar",
+   "nome": "Mar Negro",
+   "cor": "amarelo",
+   "descricao": "As águas escuras que separam Galrasia de Nova Malpetrim: rota de comerciantes, piratas e monstros marinhos.",
+   "poligono": [
+    [
+     3350,
+     0
+    ],
+    [
+     4000,
+     0
+    ],
+    [
+     4000,
+     3000
+    ],
+    [
+     3330,
+     3000
+    ],
+    [
+     3430,
+     2400
+    ],
+    [
+     3480,
+     1700
+    ],
+    [
+     3500,
+     1300
+    ],
+    [
+     3480,
+     700
+    ],
+    [
+     3420,
+     350
+    ]
+   ],
+   "rotulo": [
+    3760,
+    1500
+   ]
+  }
+ ],
+ "pins": [
+  {
+   "regiao": "ancoradouro",
+   "nome": "Capitania das Raízes",
+   "cor": "amarelo",
+   "x": 2900,
+   "y": 1040,
+   "descricao": "Registra cada navio, cobra a taxa de atracação e anota quem desembarca. O capitão do porto é humano, de Nova Malpetrim.",
+   "id": "pin-01"
+  },
+  {
+   "regiao": "ancoradouro",
+   "nome": "Píer dos Exploradores",
+   "cor": "verde",
+   "x": 2850,
+   "y": 1960,
+   "descricao": "Onde as expedições embarcam e desembarcam. Um quadro de raízes guarda contratos, mapas rasgados e recados de desaparecidos.",
+   "id": "pin-02"
+  },
+  {
+   "regiao": "ancoradouro",
+   "nome": "Taverna da Casca Oca",
+   "cor": "amarelo",
+   "x": 3180,
+   "y": 2120,
+   "descricao": "Dentro de um tronco oco à beira da lagoa. Marinheiros, caçadores e guias thera bebem lado a lado — nem sempre em paz.",
+   "id": "pin-03"
+  },
+  {
+   "regiao": "mercado",
+   "nome": "Mercado das Copas",
+   "cor": "amarelo",
+   "x": 2250,
+   "y": 1080,
+   "descricao": "Frutas que ninguém no continente sabe nomear, seda da Floresta de Seda, penas, ossos e escamas. Metal vale ouro aqui.",
+   "id": "pin-04"
+  },
+  {
+   "regiao": "mercado",
+   "nome": "Ervanário Seiva-Doce",
+   "cor": "verde",
+   "x": 2420,
+   "y": 1330,
+   "descricao": "Uma dahllan aposentada das Oqamm vende remédios, antídotos e ingredientes alquímicos colhidos com respeito.",
+   "id": "pin-05"
+  },
+  {
+   "regiao": "mercado",
+   "nome": "Casa de Câmbio de Malpetrim",
+   "cor": "amarelo",
+   "x": 1850,
+   "y": 960,
+   "descricao": "Agentes de mercadores de Nova Malpetrim compram espécimes vivos e financiam expedições — por uma parte do lucro.",
+   "id": "pin-06"
+  },
+  {
+   "regiao": "folhas-novas",
+   "nome": "Folhas Novas",
+   "cor": "amarelo",
+   "x": 2350,
+   "y": 620,
+   "descricao": "Casas-casulo nos galhos e passarelas entre as copas. Vivem aqui colonos de todo o Reinado tentando a sorte no Mundo Perdido.",
+   "id": "pin-07"
+  },
+  {
+   "regiao": "folhas-novas",
+   "nome": "Posto dos Cartógrafos",
+   "cor": "verde",
+   "x": 2780,
+   "y": 640,
+   "descricao": "Seguidores de Tanna-Toh compram relatos de exploradores e vendem cópias dos mapas mais confiáveis da ilha.",
+   "id": "pin-08"
+  },
+  {
+   "regiao": "arvore-mae",
+   "nome": "Árvore-Mãe",
+   "cor": "verde",
+   "x": 1660,
+   "y": 1500,
+   "descricao": "A primeira árvore que as Oqamm pediram para crescer. Em seu tronco há um santuário de Allihanna aberto a todos os que chegam em paz.",
+   "id": "pin-09"
+  },
+  {
+   "regiao": "arvore-mae",
+   "nome": "Fonte das Raízes",
+   "cor": "verde",
+   "x": 1380,
+   "y": 1180,
+   "descricao": "Água que brota entre as raízes, morna de energia positiva. Feridos que repousam aqui se recuperam em dias, não semanas.",
+   "id": "pin-10"
+  },
+  {
+   "regiao": "mascaras",
+   "nome": "Salão das Máscaras",
+   "cor": "verde",
+   "x": 1620,
+   "y": 2280,
+   "descricao": "Onde as Oqamm se reúnem, sempre sob máscaras de madeira. É aqui que se pede permissão para caçar na ilha.",
+   "id": "pin-11"
+  },
+  {
+   "regiao": "mascaras",
+   "nome": "Jardim dos Silêncios",
+   "cor": "amarelo",
+   "x": 1350,
+   "y": 2470,
+   "descricao": "Clareira onde ficam os caçadores que mataram além do necessário. Ninguém sabe dizer se estão presos, plantados ou em paz.",
+   "id": "pin-12"
+  },
+  {
+   "regiao": "oficinas",
+   "nome": "Forja do Exílio",
+   "cor": "amarelo",
+   "x": 2250,
+   "y": 2380,
+   "descricao": "Um anão de Doherimm mantém a única forja da cidade, numa cúpula de pedra trazida do continente. Conserta armas e vende anzóis aos thera.",
+   "id": "pin-13"
+  },
+  {
+   "regiao": "oficinas",
+   "nome": "Ateliê da Seda",
+   "cor": "amarelo",
+   "x": 2620,
+   "y": 2480,
+   "descricao": "Tecelões transformam a seda da Floresta de Seda em cordas, velas e roupas leves que secam com o vento.",
+   "id": "pin-14"
+  },
+  {
+   "regiao": "currais",
+   "nome": "Currais de Feras",
+   "cor": "vermelho",
+   "x": 1500,
+   "y": 700,
+   "descricao": "Filhotes de lagarto-terror, galhadas e aves atrozes à espera de embarque. Às vezes, algo escapa.",
+   "id": "pin-15"
+  },
+  {
+   "regiao": "currais",
+   "nome": "Leilão de Bóris Maçã-Torta",
+   "cor": "vermelho",
+   "x": 1270,
+   "y": 960,
+   "descricao": "Um comerciante de feras que paga bem e pergunta pouco. As Oqamm o observam de perto — e ele sabe disso.",
+   "id": "pin-16"
+  },
+  {
+   "regiao": "muralha",
+   "nome": "Portão do Rio",
+   "cor": "verde",
+   "x": 1000,
+   "y": 1500,
+   "descricao": "Arco de raízes sobre o rio. Canoas thera entram com peixe e frutas; à noite, as raízes se fecham sozinhas.",
+   "id": "pin-17"
+  },
+  {
+   "regiao": "muralha",
+   "nome": "Posto dos Guias Thera",
+   "cor": "verde",
+   "x": 1060,
+   "y": 1900,
+   "descricao": "Velocis e ceratops oferecem seus serviços como guias e batedores em troca de ferramentas e armas de metal.",
+   "id": "pin-18"
+  },
+  {
+   "regiao": "muralha",
+   "nome": "Portão da Selva",
+   "cor": "amarelo",
+   "x": 980,
+   "y": 1120,
+   "descricao": "A saída para o interior. Sentinelas dahllan avisam: dali em diante, as Oqamm não pedem mais nada aos lagartos-terror.",
+   "id": "pin-19"
+  },
+  {
+   "regiao": "selva",
+   "nome": "Acampamento dos Caçadores",
+   "cor": "vermelho",
+   "x": 520,
+   "y": 2350,
+   "descricao": "Caçadores que se recusam a obedecer às Oqamm. Matam para vender troféus e não gostam de testemunhas.",
+   "id": "pin-20"
+  },
+  {
+   "regiao": "selva",
+   "nome": "Ninho de Deinonicos",
+   "cor": "vermelho",
+   "x": 600,
+   "y": 700,
+   "descricao": "Um bando de deinonicos caça os desavisados que se afastam da trilha. Os thera evitam esta parte da mata.",
+   "id": "pin-21"
+  },
+  {
+   "regiao": "selva",
+   "nome": "Trilha das Voracis",
+   "cor": "vermelho",
+   "x": 300,
+   "y": 1550,
+   "descricao": "Marcas de garras nas árvores avisam: território de uma tribo voracis que ainda vê estrangeiros como presa.",
+   "id": "pin-22"
+  },
+  {
+   "regiao": "rochedo",
+   "nome": "Ninhal dos Pteros",
+   "cor": "verde",
+   "x": 3080,
+   "y": 300,
+   "descricao": "Casais de pteros vigiam o mar e levam recados entre Lysianassa e as tribos da costa — em troca de peixe e respeito.",
+   "id": "pin-23"
+  },
+  {
+   "regiao": "enseada",
+   "nome": "Enseada da Maré Torta",
+   "cor": "vermelho",
+   "x": 2880,
+   "y": 2700,
+   "descricao": "Contrabandistas e restos do Conclave Pirata embarcam feras e artefatos sem passar pela capitania.",
+   "id": "pin-24"
+  },
+  {
+   "regiao": "mar",
+   "nome": "Rota de Nova Malpetrim",
+   "cor": "amarelo",
+   "x": 3760,
+   "y": 1250,
+   "descricao": "Por onde chegam os navios do continente. Tempestades, elfos-do-mar e piratas atacam quem atravessa.",
+   "id": "pin-25"
+  },
+  {
+   "regiao": "mar",
+   "nome": "Recife das Serpentes",
+   "cor": "vermelho",
+   "x": 3720,
+   "y": 2500,
+   "descricao": "Pedras escuras onde serpentes marinhas descansam. Pilotos experientes dão uma volta larga.",
+   "id": "pin-26"
+  }
+ ],
+ "imagem": "lysianassa.webp"
+}

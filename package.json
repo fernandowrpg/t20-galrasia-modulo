@@ -1,0 +1,19 @@
+{
+	"name": "t20-galrasia-modulo",
+	"version": "1.0.0",
+	"private": true,
+	"description": "Vigília de personagens e ameaças, tela de entrada e mapa de Lysianassa para a campanha de Galrasia no Foundry VTT (Tormenta20).",
+	"type": "module",
+	"license": "MIT",
+	"foundry": {
+		"github": "fernandowrpg/t20-galrasia-modulo"
+	},
+	"scripts": {
+		"build:release": "node tools/build-release.mjs",
+		"build": "npm run build:release",
+		"check": "node tools/check.mjs"
+	},
+	"devDependencies": {
+		"adm-zip": "^0.5.16"
+	}
+}

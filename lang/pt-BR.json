@@ -1,0 +1,35 @@
+{
+	"GALRASIA": {
+		"Config": {
+			"painelPersonagens": {
+				"Nome": "Exibir o painel da expedição",
+				"Dica": "Painel flutuante da vigília com vida, mana, Defesa e condições dos personagens dos jogadores. O mestre vê todos; o jogador, os personagens que pode observar. Minimizado, vira um ícone que pode ser preso num canto."
+			},
+			"painelAmeacas": {
+				"Nome": "Exibir o painel de ameaças",
+				"Dica": "Painel flutuante da vigília com vida, mana, iniciativa, ND, Defesa e condições das ameaças enquanto houver um combate em andamento."
+			},
+			"personagensJogadores": {
+				"Nome": "Jogadores veem o painel da expedição",
+				"Dica": "Se desligado, só o mestre vê o painel de personagens."
+			},
+			"ameacasJogadores": {
+				"Nome": "Painel de ameaças para jogadores",
+				"Dica": "Define o que os jogadores veem no painel de ameaças. O mestre sempre vê os valores completos.",
+				"Nenhum": "Não exibir",
+				"Estado": "Somente o estado aproximado (sem números)",
+				"Valores": "Valores completos"
+			},
+			"telaEntrada": {
+				"Nome": "Tela de entrada",
+				"Rotulo": "Abrir",
+				"Dica": "Imagem de fundo em pintura rupestre e descrição do mundo prontas para a tela de entrada, com o passo a passo."
+			}
+		},
+		"Entrada": {
+			"Titulo": "Galrasia: tela de entrada",
+			"CaminhoCopiado": "Caminho da imagem copiado.",
+			"DescricaoCopiada": "HTML da descrição copiado."
+		}
+	}
+}

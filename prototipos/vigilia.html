@@ -1,0 +1,146 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<title>Protótipo — Vigília de Galrasia</title>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+<link href="https://fonts.googleapis.com/css2?family=Signika:wght@400;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="vigilia.css">
+<style>
+/* Moldura imitando o Foundry: cena ao fundo, barra lateral à direita, navegação de cenas no topo. */
+html, body { margin: 0; height: 100%; overflow: hidden; font-family: Signika, sans-serif; }
+body { background: #111 url("cena.webp") center / cover no-repeat; }
+#scene-navigation { position: fixed; top: 10px; left: 110px; display: flex; gap: 6px; }
+#scene-navigation span { background: rgba(0,0,0,.7); color: #ddd; border: 1px solid #333; border-radius: 4px; padding: 4px 12px; font-size: 13px; }
+#scene-navigation span.ativa { border-color: #c98a1b; color: #fff; }
+#controles { position: fixed; left: 10px; top: 60px; display: flex; flex-direction: column; gap: 6px; }
+#controles i { width: 38px; height: 38px; display: grid; place-items: center; background: rgba(0,0,0,.65); color: #ddd; border-radius: 6px; border: 1px solid #333; }
+#sidebar { position: fixed; right: 0; top: 0; bottom: 0; width: 300px; background: rgba(15,15,20,.88); border-left: 1px solid #333; color: #bbb; padding: 14px; font-size: 13px; }
+#sidebar h4 { margin: 0 0 8px; color: #ddd; }
+#legenda { position: fixed; left: 50%; bottom: 14px; transform: translateX(-50%); background: rgba(0,0,0,.78); color: #eee; padding: 8px 14px; border-radius: 8px; font-size: 13px; max-width: 720px; text-align: center; }
+</style>
+</head>
+<body>
+<nav id="scene-navigation"><span class="ativa">Lysianassa</span><span>Selva Além da Muralha</span></nav>
+<div id="controles"><i class="fa-solid fa-user"></i><i class="fa-solid fa-ruler"></i><i class="fa-solid fa-map-pin"></i></div>
+<aside id="sidebar"><h4>Combat Tracker</h4>Rodada 2 · Turno: Deinonico Batedor</aside>
+
+<!-- Painel de personagens: mesma estrutura do template do módulo -->
+<div class="galrasia gl-painel gl-painel-personagens" data-chave="personagens" style="left:110px;top:60px">
+	<div class="gl-painel-conteudo">
+		<header class="gl-painel-topo" title="Arraste para mover; clique duplo para voltar à posição padrão">
+			<i class="fa-solid fa-compass"></i>
+			<strong>Expedição</strong>
+			<span class="gl-painel-acoes">
+				<a data-acao="detalhar" title="Mostrar as perícias treinadas"><i class="fa-solid fa-id-card"></i></a>
+				<a data-acao="recolher" title="Mostrar só vida e mana"><i class="fa-solid fa-chevron-up"></i></a>
+				<a data-acao="minimizar" title="Minimizar o painel"><i class="fa-solid fa-window-minimize"></i></a>
+			</span>
+		</header>
+		<ul class="gl-painel-lista" id="lista-personagens"></ul>
+	</div>
+</div>
+
+<!-- Painel de ameaças -->
+<div class="galrasia gl-painel gl-painel-ameacas" data-chave="ameacas" style="right:316px;top:60px">
+	<div class="gl-painel-conteudo">
+		<header class="gl-painel-topo" title="Arraste para mover; clique duplo para voltar à posição padrão">
+			<i class="fa-solid fa-paw"></i>
+			<strong>Ameaças</strong>
+			<span class="gl-painel-rodada">Rodada 2</span>
+			<span class="gl-painel-acoes">
+				<a data-acao="recolher" title="Mostrar só vida e mana"><i class="fa-solid fa-chevron-up"></i></a>
+				<a data-acao="minimizar" title="Minimizar o painel"><i class="fa-solid fa-window-minimize"></i></a>
+			</span>
+		</header>
+		<ul class="gl-painel-lista" id="lista-ameacas"></ul>
+		<footer class="gl-painel-rodape"><span><i class="fa-solid fa-person"></i> 2 de 3 de pé</span><span>PV 61/118 (52%)</span></footer>
+	</div>
+</div>
+
+<div id="legenda">Protótipo da vigília no tema de Galrasia. Teste: <b>minimizar</b> vira ícone; <b>clique</b> no ícone reabre; <b>arraste</b> o ícone até um canto para prendê-lo; a seta recolhe; o cartão mostra perícias.</div>
+
+<script>
+const retrato = (letras, cor) => "data:image/svg+xml," + encodeURIComponent(
+	`<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'><rect width='64' height='64' fill='${cor}'/><text x='32' y='41' font-family='Georgia' font-size='26' font-weight='bold' text-anchor='middle' fill='#efe6cf'>${letras}</text></svg>`);
+const barra = (tipo, rotulo, v, m) => {
+	const pct = Math.round(v / m * 100), f = v <= 0 ? "caido" : pct <= 25 ? "critico" : pct <= 50 ? "ferido" : pct < 100 ? "leve" : "ileso";
+	return `<div class="gl-barra gl-barra-${tipo} faixa-${f}"><span class="gl-barra-rotulo">${rotulo}</span><span class="gl-barra-trilho"><span class="gl-barra-nivel" style="width:${pct}%"></span></span><span class="gl-barra-valor">${v}/${m}</span></div>`;
+};
+const PERSONAGENS = [
+	{ nome: "Kaerah, a Voracis", jog: "Ana", cor: "#7a3a1c", pv: [38, 52], pm: [10, 18], def: 21, per: [["Furtividade", "+11"], ["Percepção", "+9"], ["Sobrevivência", "+12"]] },
+	{ nome: "Irmão Tomas", jog: "Bruno", cor: "#2e6b47", pv: [21, 40], pm: [22, 30], def: 18, per: [["Cura", "+10"], ["Religião", "+9"], ["Vontade", "+8"]] },
+	{ nome: "Lyra Folha-Fina", jog: "Carla", cor: "#3f6f8f", pv: [9, 36], pm: [5, 34], def: 17, per: [["Misticismo", "+12"], ["Conhecimento", "+10"]] },
+	{ nome: "Grum Casco-de-Pedra", jog: "Dani", cor: "#6e4826", pv: [61, 61], pm: [4, 8], def: 24, per: [["Atletismo", "+10"], ["Fortitude", "+11"], ["Intimidação", "+6"]] }
+];
+const AMEACAS = [
+	{ nome: "Deinonico Batedor", cor: "#8f2e12", pv: [22, 38], ini: 18, nd: 2, def: 18, vez: true },
+	{ nome: "Deinonico", cor: "#8f2e12", pv: [39, 40], ini: 15, nd: 2, def: 18 },
+	{ nome: "Voracis Caçadora", cor: "#4a2a14", pv: [0, 40], ini: 12, nd: 3, def: 19, caida: true }
+];
+document.getElementById("lista-personagens").innerHTML = PERSONAGENS.map(p => `
+	<li class="gl-painel-item">
+		<img class="gl-painel-retrato" src="${retrato(p.nome.split(" ").map(w => w[0]).slice(0, 2).join(""), p.cor)}" title="Abrir a ficha">
+		<div class="gl-painel-corpo">
+			<div class="gl-painel-linha"><a class="gl-painel-nome">${p.nome}</a><span class="gl-painel-jogador">${p.jog}</span></div>
+			${barra("pv", "PV", ...p.pv)}${barra("pm", "PM", ...p.pm)}
+			<div class="gl-painel-detalhe gl-painel-dados"><span title="Defesa"><i class="fa-solid fa-shield-halved"></i> ${p.def}</span></div>
+			<ul class="gl-painel-pericias" hidden>${p.per.map(([n, b]) => `<li><span>${n}</span> <strong>${b}</strong></li>`).join("")}</ul>
+		</div>
+	</li>`).join("");
+document.getElementById("lista-ameacas").innerHTML = AMEACAS.map(a => `
+	<li class="gl-painel-item ${a.vez ? "da-vez" : ""} ${a.caida ? "caida" : ""}">
+		<img class="gl-painel-retrato" src="${retrato("🦖", a.cor)}">
+		<div class="gl-painel-corpo">
+			<div class="gl-painel-linha"><a class="gl-painel-nome">${a.vez ? '<i class="fa-solid fa-play"></i> ' : ""}${a.nome}</a>${a.caida ? '<i class="fa-solid fa-skull"></i>' : ""}</div>
+			${barra("pv", "PV", ...a.pv)}
+			<div class="gl-painel-detalhe gl-painel-dados"><span><i class="fa-solid fa-bolt"></i> ${a.ini}</span><span>ND ${a.nd}</span><span><i class="fa-solid fa-shield-halved"></i> ${a.def}</span></div>
+		</div>
+	</li>`).join("");
+
+/* Comportamento simplificado do módulo: recolher, detalhar, minimizar em ícone, arrastar e prender num canto. */
+const IMA = 64, TAM = 46, MARGEM = 8;
+for (const painel of document.querySelectorAll(".gl-painel")) {
+	const topo = painel.querySelector(".gl-painel-topo");
+	let canto = null;
+	painel.querySelector("[data-acao=minimizar]").onclick = (e) => { e.stopPropagation(); painel.classList.add("minimizado"); };
+	painel.querySelector("[data-acao=recolher]").onclick = (e) => {
+		painel.classList.toggle("recolhido");
+		e.currentTarget.querySelector("i").className = "fa-solid " + (painel.classList.contains("recolhido") ? "fa-chevron-down" : "fa-chevron-up");
+	};
+	const det = painel.querySelector("[data-acao=detalhar]");
+	if (det) det.onclick = () => { det.classList.toggle("ativo"); painel.querySelectorAll(".gl-painel-pericias").forEach(u => u.hidden = !det.classList.contains("ativo")); };
+	const cantoProximo = (l, t) => {
+		const cx = l + TAM / 2, cy = t + TAM / 2;
+		const o = cx < IMA, le = cx > innerWidth - IMA, n = cy < IMA, s = cy > innerHeight - IMA;
+		return (o || le) && (n || s) ? (n ? "n" : "s") + (o ? "w" : "e") : null;
+	};
+	topo.addEventListener("pointerdown", (ev) => {
+		if (ev.target.closest("a")) return;
+		const r = painel.getBoundingClientRect(), dx = ev.clientX - r.left, dy = ev.clientY - r.top, x0 = ev.clientX, y0 = ev.clientY;
+		let movido = false;
+		painel.style.right = "auto"; painel.style.left = r.left + "px"; painel.style.top = r.top + "px";
+		const mover = (e) => {
+			if (!movido && Math.hypot(e.clientX - x0, e.clientY - y0) < 4) return;
+			movido = true; painel.classList.add("arrastando");
+			const l = Math.max(0, Math.min(e.clientX - dx, innerWidth - painel.offsetWidth)), t = Math.max(0, Math.min(e.clientY - dy, innerHeight - painel.offsetHeight));
+			painel.style.left = l + "px"; painel.style.top = t + "px";
+			if (painel.classList.contains("minimizado")) painel.classList.toggle("ima", !!cantoProximo(l, t));
+		};
+		addEventListener("pointermove", mover);
+		addEventListener("pointerup", () => {
+			removeEventListener("pointermove", mover);
+			painel.classList.remove("arrastando", "ima");
+			if (!painel.classList.contains("minimizado")) return;
+			if (!movido) { painel.classList.remove("minimizado"); return; }
+			canto = cantoProximo(parseInt(painel.style.left), parseInt(painel.style.top));
+			if (canto) {
+				painel.style.left = (canto.endsWith("w") ? MARGEM : innerWidth - TAM - MARGEM) + "px";
+				painel.style.top = (canto.startsWith("n") ? MARGEM : innerHeight - TAM - MARGEM) + "px";
+			}
+		}, { once: true });
+	});
+}
+</script>
+</body>
+</html>

@@ -1,0 +1,43 @@
+<div class="gl-painel-conteudo">
+	<header class="gl-painel-topo">
+		<i class="fa-solid fa-paw"></i>
+		<strong>Ameaças</strong>
+		<span class="gl-painel-rodada" data-selo="{{dePe}}">Rodada {{rodada}}</span>
+		<span class="gl-painel-acoes">
+			{{#unless minimizado}}<a data-action="recolher" data-tooltip="{{#if recolhido}}Mostrar iniciativa, ND, Defesa e condições{{else}}Mostrar só vida e mana{{/if}}"><i class="fa-solid {{#if recolhido}}fa-chevron-down{{else}}fa-chevron-up{{/if}}"></i></a>{{/unless}}
+			<a data-action="minimizar" data-tooltip="{{#if minimizado}}Mostrar o painel{{else}}Minimizar o painel{{/if}}"><i class="fa-solid {{#if minimizado}}fa-window-maximize{{else}}fa-window-minimize{{/if}}"></i></a>
+		</span>
+	</header>
+	<ul class="gl-painel-lista">
+		{{#each ameacas}}
+		<li class="gl-painel-item {{#if daVez}}da-vez{{/if}} {{#if caida}}caida{{/if}}" data-combatente="{{id}}">
+			<img class="gl-painel-retrato" src="{{img}}" alt="" data-action="abrirFicha" data-tooltip="Abrir a ficha">
+			<div class="gl-painel-corpo">
+				<div class="gl-painel-linha">
+					<a class="gl-painel-nome" data-action="focar" data-tooltip="Centralizar no token">{{#if daVez}}<i class="fa-solid fa-play"></i> {{/if}}{{nome}}</a>
+					{{#if oculta}}<i class="fa-solid fa-eye-slash" data-tooltip="Oculta para os jogadores"></i>{{/if}}
+					{{#if derrotada}}<i class="fa-solid fa-skull" data-tooltip="Derrotada"></i>{{/if}}
+				</div>
+				{{#each barras}}
+				<div class="gl-barra gl-barra-{{tipo}} faixa-{{faixa}}" data-tooltip="{{dica}}">
+					<span class="gl-barra-rotulo">{{rotulo}}</span>
+					<span class="gl-barra-trilho"><span class="gl-barra-nivel" style="width: {{pct}}%"></span></span>
+					<span class="gl-barra-valor">{{texto}}</span>
+				</div>
+				{{/each}}
+				<div class="gl-painel-detalhe gl-painel-dados">
+					<span data-tooltip="Iniciativa"><i class="fa-solid fa-bolt"></i> {{iniciativa}}</span>
+					{{#if nd}}<span data-tooltip="Nível de desafio">ND {{nd}}</span>{{/if}}
+					{{#if defesa}}<span data-tooltip="Defesa"><i class="fa-solid fa-shield-halved"></i> {{defesa}}</span>{{/if}}
+					{{#each condicoes}}<img class="gl-painel-condicao" src="{{img}}" alt="{{nome}}" data-tooltip="{{nome}}">{{/each}}
+					{{#if maisCondicoes}}<span data-tooltip="Outras condições">+{{maisCondicoes}}</span>{{/if}}
+				</div>
+			</div>
+		</li>
+		{{/each}}
+	</ul>
+	<footer class="gl-painel-rodape">
+		<span><i class="fa-solid fa-person"></i> {{dePe}} de {{total}} de pé</span>
+		{{#if completo}}<span data-tooltip="Soma dos PV das ameaças">PV {{pvAtual}}/{{pvMaximo}} ({{pvPct}}%)</span>{{/if}}
+	</footer>
+</div>

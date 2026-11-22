@@ -1,0 +1,23 @@
+<div class="gl-entrada">
+	<p class="gl-entrada-aviso"><i class="fa-solid fa-circle-info"></i> A tela de entrada do Foundry não carrega módulos. Ela usa a <strong>imagem de fundo</strong> e a <strong>descrição</strong> do mundo, que se editam no Setup. Copie as duas daqui.</p>
+
+	<img class="gl-entrada-fundo" src="{{fundo}}" alt="Pintura rupestre de Galrasia">
+
+	<h3><i class="fa-solid fa-image"></i> 1. Imagem de fundo</h3>
+	<div class="gl-entrada-linha">
+		<code>{{fundo}}</code>
+		<button type="button" data-action="copiarCaminho"><i class="fa-solid fa-copy"></i> Copiar caminho</button>
+	</div>
+
+	<h3><i class="fa-solid fa-scroll"></i> 2. Descrição do mundo</h3>
+	<div class="gl-entrada-previa">{{{html}}}</div>
+	<button type="button" data-action="copiarDescricao"><i class="fa-solid fa-copy"></i> Copiar o HTML da descrição</button>
+
+	<h3><i class="fa-solid fa-list-ol"></i> 3. Aplicar no mundo «{{mundo}}»</h3>
+	<ol class="gl-entrada-passos">
+		<li>Volte ao Setup (<em>Return to Setup</em>) e, na aba <strong>Worlds</strong>, abra o menu do mundo e escolha <strong>Edit World</strong>.</li>
+		<li>Em <strong>Background Image</strong>, cole o caminho da imagem.</li>
+		<li>Em <strong>Description</strong>, alterne o editor para código-fonte (<i class="fa-solid fa-code"></i>) e cole o HTML.</li>
+		<li>Salve com <strong>Update World</strong> e abra o mundo. A tela de entrada já aparece nova.</li>
+	</ol>
+</div>
