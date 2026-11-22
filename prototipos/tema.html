@@ -1,0 +1,101 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<title>Protótipo — Tema Galrasia no Foundry</title>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+<link href="https://fonts.googleapis.com/css2?family=Signika:wght@400;600&family=Cinzel:wght@500;700;900&display=swap" rel="stylesheet">
+<style>
+/* Imitação mínima do Foundry v13 (estilos do núcleo ficam numa camada, como no v13) */
+@layer foundry {
+	body { margin: 0; height: 100vh; overflow: hidden; font-family: Signika, sans-serif; font-size: 14px; color: #ddd; background: #111 url("cena.webp") center / cover; }
+	.application { position: fixed; background: #1b1b22; color: #ddd; border: 1px solid #000; border-radius: 6px; box-shadow: 0 0 20px #000; display: flex; flex-direction: column; }
+	.application.theme-light { background: #e8e2d4; color: #222; }
+	.window-header { display: flex; align-items: center; gap: 8px; padding: 6px 10px; background: #0b0a13; border-bottom: 1px solid #333; }
+	.window-header h1 { margin: 0; font-size: 15px; flex: 1; }
+	.window-content { padding: 10px 12px; overflow: auto; flex: 1; }
+	.ui-control { width: 38px; height: 38px; display: grid; place-items: center; border-radius: 6px; background: #1b1b22; border: 1px solid #333; color: #ccc; }
+	#scene-controls { position: fixed; left: 10px; top: 70px; display: flex; flex-direction: column; gap: 6px; }
+	#scene-navigation { position: fixed; left: 60px; top: 10px; display: flex; gap: 6px; }
+	#scene-navigation .ui-control { width: auto; padding: 0 14px; height: 32px; }
+	#sidebar { position: fixed; right: 0; top: 0; bottom: 0; width: 320px; display: flex; flex-direction: column; padding: 6px; gap: 6px; }
+	#sidebar-tabs { display: flex; gap: 4px; }
+	#sidebar-tabs .ui-control { width: 34px; height: 34px; }
+	#sidebar-content { flex: 1; background: #1b1b22; border-radius: 6px; padding: 8px; overflow: hidden; display: flex; flex-direction: column; gap: 8px; }
+	.chat-message { background: #2a2a33; border-radius: 4px; padding: 6px 8px; }
+	.message-header { display: flex; justify-content: space-between; }
+	.message-header h4 { margin: 0; font-size: 14px; }
+	.message-timestamp { font-size: 11px; }
+	.dice-total { margin-top: 6px; text-align: center; font-size: 20px; font-weight: bold; border-radius: 4px; padding: 2px; }
+	.dice-formula { text-align: center; border-radius: 4px; font-size: 12px; padding: 2px; }
+	#chat-form textarea { width: 100%; height: 60px; box-sizing: border-box; }
+	#hotbar { position: fixed; left: 50%; bottom: 10px; transform: translateX(-50%); display: flex; gap: 4px; }
+	#hotbar .slot { width: 46px; height: 46px; display: grid; place-items: center; border-radius: 6px; background: #1b1b22; border: 1px solid #333; }
+	#players-active { position: fixed; left: 10px; bottom: 10px; width: 200px; padding: 6px 10px; border-radius: 6px; background: #1b1b22; font-size: 13px; }
+	input, select, textarea { background: #0b0a13; color: #ddd; border: 1px solid #444; border-radius: 3px; padding: 4px 6px; font: inherit; }
+	button { font: inherit; padding: 4px 10px; border-radius: 3px; border: 1px solid #444; background: #2a2a33; color: #ddd; }
+	label { display: block; margin: 6px 0 2px; font-weight: 600; }
+	nav.tabs { display: flex; gap: 12px; border-bottom: 1px solid #444; padding-bottom: 4px; margin-bottom: 8px; }
+	nav.tabs a { color: inherit; text-decoration: none; }
+}
+#legenda { position: fixed; left: 70px; top: 50px; background: rgba(0,0,0,.75); color: #eee; padding: 6px 10px; border-radius: 6px; font-size: 12px; }
+</style>
+<link rel="stylesheet" href="../styles/galrasia.css">
+<link rel="stylesheet" href="../styles/tema-galrasia.css">
+</head>
+<body class="theme-dark gl-tema-tudo">
+<div id="interface">
+	<nav id="scene-navigation"><button class="ui-control active">Lysianassa</button><button class="ui-control">Selva Além da Muralha</button></nav>
+	<menu id="scene-controls">
+		<button class="ui-control active"><i class="fa-solid fa-user"></i></button>
+		<button class="ui-control"><i class="fa-solid fa-ruler"></i></button>
+		<button class="ui-control"><i class="fa-solid fa-map-pin"></i></button>
+		<button class="ui-control"><i class="fa-solid fa-map-location-dot"></i></button>
+	</menu>
+	<aside id="sidebar">
+		<nav id="sidebar-tabs">
+			<button class="ui-control active"><i class="fa-solid fa-comments"></i></button>
+			<button class="ui-control"><i class="fa-solid fa-fist-raised"></i></button>
+			<button class="ui-control"><i class="fa-solid fa-users"></i></button>
+			<button class="ui-control"><i class="fa-solid fa-book-open"></i></button>
+			<button class="ui-control"><i class="fa-solid fa-gear"></i></button>
+		</nav>
+		<section id="sidebar-content">
+			<div class="chat-log">
+				<div class="chat-message"><header class="message-header"><h4 class="message-sender">Kaerah, a Voracis</h4><span class="message-timestamp">agora</span></header>
+					<div>Ataque com garra</div><div class="dice-formula">1d20 + 12</div><div class="dice-total critical">32</div></div>
+				<div class="chat-message whisper" style="margin-top:8px"><header class="message-header"><h4 class="message-sender">Mestre</h4><span class="message-timestamp">sussurro</span></header>
+					<div>As Oqamm observam do alto das torres.</div></div>
+				<div class="chat-message" style="margin-top:8px"><header class="message-header"><h4 class="message-sender">Deinonico Batedor</h4><span class="message-timestamp">1 min</span></header>
+					<div class="dice-formula">1d20 + 8</div><div class="dice-total fumble">9</div></div>
+			</div>
+			<form id="chat-form"><textarea placeholder="Mensagem"></textarea></form>
+		</section>
+	</aside>
+	<aside id="players-active"><b>Jogadores</b><br>● Mestre (GM)<br>● Ana — Kaerah<br>● Bruno — Irmão Tomas</aside>
+	<div id="hotbar"><div class="slot"><i class="fa-solid fa-village"></i>🏘</div><div class="slot">👁</div><div class="slot">3</div><div class="slot">4</div><div class="slot">5</div></div>
+</div>
+
+<section class="application theme-dark" style="left:420px;top:90px;width:430px;height:460px">
+	<header class="window-header"><i class="fa-solid fa-gears"></i><h1 class="window-title">Configurações do Módulo</h1><a><i class="fa-solid fa-xmark"></i></a></header>
+	<div class="window-content">
+		<nav class="tabs"><a class="item active">Galrasia</a><a class="item">Núcleo</a></nav>
+		<h3>Galrasia</h3>
+		<label>Tema Galrasia (selva à noite)</label>
+		<select><option>Foundry inteiro e janelas do módulo</option></select>
+		<label>Painel de ameaças para jogadores</label>
+		<select><option>Somente o estado aproximado (sem números)</option></select>
+		<label>Nome da expedição</label>
+		<input type="text" value="Expedição de Lysianassa" style="width:100%;box-sizing:border-box">
+		<p style="margin-top:14px"><button><i class="fa-solid fa-door-open"></i> Tela de entrada</button> <button>Salvar</button></p>
+	</div>
+</section>
+
+<section class="application theme-light" style="left:880px;top:160px;width:300px;height:220px">
+	<header class="window-header"><i class="fa-solid fa-user"></i><h1 class="window-title">Ficha (tema claro)</h1></header>
+	<div class="window-content">Uma ficha de sistema que usa o tema claro ganha só a moldura e o cabeçalho: o corpo continua claro e legível.</div>
+</section>
+
+<div id="legenda">Protótipo do tema Galrasia sobre uma imitação do Foundry v13 (os estilos do Foundry são simplificados).</div>
+</body>
+</html>

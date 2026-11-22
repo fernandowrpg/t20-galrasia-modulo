@@ -2,7 +2,7 @@
 	"id": "t20-galrasia-modulo",
 	"title": "Galrasia",
 	"description": "Expedição a Galrasia, o Inferno Verde, para Tormenta20: vigília de personagens e ameaças em painéis flutuantes que viram ícone, tela de entrada em pintura rupestre e o mapa revelável de Lysianassa.",
-	"version": "1.0.0",
+	"version": "1.1.0",
 	"authors": [
 		{
 			"name": "fernandowrpg"
@@ -29,7 +29,8 @@
 		"module/main.mjs"
 	],
 	"styles": [
-		"styles/galrasia.css"
+		"styles/galrasia.css",
+		"styles/tema-galrasia.css"
 	],
 	"languages": [
 		{
@@ -45,7 +46,7 @@
 	],
 	"url": "https://github.com/fernandowrpg/t20-galrasia-modulo",
 	"manifest": "https://github.com/fernandowrpg/t20-galrasia-modulo/releases/latest/download/module.json",
-	"download": "https://github.com/fernandowrpg/t20-galrasia-modulo/releases/download/v1.0.0/module.zip",
+	"download": "https://github.com/fernandowrpg/t20-galrasia-modulo/releases/download/v1.1.0/module.zip",
 	"bugs": "https://github.com/fernandowrpg/t20-galrasia-modulo/issues",
 	"readme": "https://github.com/fernandowrpg/t20-galrasia-modulo/blob/main/README.md",
 	"changelog": "https://github.com/fernandowrpg/t20-galrasia-modulo/blob/main/CHANGELOG.md",

@@ -24,6 +24,13 @@
 				"Nome": "Tela de entrada",
 				"Rotulo": "Abrir",
 				"Dica": "Imagem de fundo em pintura rupestre e descrição do mundo prontas para a tela de entrada, com o passo a passo."
+			},
+			"tema": {
+				"Nome": "Tema Galrasia (selva à noite)",
+				"Dica": "Copa esmeralda nos cabeçalhos das janelas, faixa de âmbar, folhagem escura no corpo das janelas, chat e barra lateral, e botões da interface em verde e âmbar. Vale só para este navegador. Fichas que usam o tema claro do Foundry ganham só a moldura e o cabeçalho. As fontes vêm do Google Fonts; sem internet, o Foundry usa fontes parecidas.",
+				"Tudo": "Foundry inteiro e janelas do módulo",
+				"Modulo": "Somente as janelas e painéis do módulo",
+				"Desligado": "Desligado"
 			}
 		},
 		"Entrada": {

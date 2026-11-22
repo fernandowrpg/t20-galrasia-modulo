@@ -4,6 +4,7 @@ import { PainelAmeacasApp } from "./apps/painel-ameacas.mjs";
 import { TelaEntradaApp } from "./apps/tela-entrada.mjs";
 import * as lysianassa from "./lysianassa.mjs";
 import * as logica from "./logica.mjs";
+import { aplicarTema, registrarTema } from "./tema.mjs";
 
 const atualizarPersonagens = foundry.utils.debounce(() => PainelPersonagensApp.sincronizar(), 100);
 const atualizarAmeacas = foundry.utils.debounce(() => PainelAmeacasApp.sincronizar(), 100);
@@ -14,6 +15,8 @@ const atualizarTudo = () => {
 
 Hooks.once("init", () => {
 	registrarConfiguracoes({ TelaEntradaApp });
+	registrarTema();
+	aplicarTema();
 	aoMudarConfiguracao(atualizarTudo);
 	lysianassa.registrarLysianassa();
 	game.modules.get(MODULO).api = {

@@ -1,0 +1,298 @@
+/* Tema Galrasia para o Foundry: a selva à noite.
+   Copa esmeralda nos cabeçalhos, faixa de âmbar (seiva), folhagem escura nos corpos,
+   osso de lagarto-trovão no texto e a brasa de Obassa nos destaques de perigo.
+   body.gl-tema-tudo: interface do Foundry e janelas do módulo.
+   body.gl-tema-modulo: só as janelas e painéis do módulo.
+   As regras gerais usam :where() para ter especificidade baixa e não brigar com sistemas e outros módulos. */
+
+body.gl-tema-tudo,
+body.gl-tema-modulo {
+	--gl-noite: #0d1712;
+	--gl-noite-2: #12211a;
+	--gl-noite-3: #172a20;
+	--gl-selva: #1f4d33;
+	--gl-selva-2: #2e6b47;
+	--gl-broto: #8fbf5a;
+	--gl-esmeralda: #4fbf82;
+	--gl-ambar: #c98a1b;
+	--gl-ambar-2: #e8b44a;
+	--gl-brasa: #d4561e;
+	--gl-osso: #efe6cf;
+	--gl-texto: #e6eedc;
+	--gl-texto-suave: rgba(230, 238, 220, 0.7);
+	--gl-traco: rgba(143, 191, 90, 0.22);
+	--gl-copa: linear-gradient(120deg, var(--gl-selva-2) 0%, var(--gl-selva) 55%, #12301f 100%);
+	--gl-folhagem:
+		url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='240' height='240'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.75' numOctaves='3'/%3E%3CfeColorMatrix values='0 0 0 0 .4 0 0 0 0 .6 0 0 0 0 .3 0 0 0 .07 0'/%3E%3C/filter%3E%3Crect width='240' height='240' filter='url(%23n)'/%3E%3C/svg%3E"),
+		radial-gradient(ellipse 80% 40% at 50% 0%, rgba(143, 191, 90, 0.10), transparent 70%),
+		linear-gradient(180deg, var(--gl-noite-3), var(--gl-noite-2) 35%, var(--gl-noite));
+	--gl-fonte-titulo: "Cinzel", "Modesto Condensed", "Palatino Linotype", serif;
+}
+
+/* ------------------------------------------------------------------ */
+/* Cabeçalho das janelas: copa das árvores com faixa de âmbar          */
+/* ------------------------------------------------------------------ */
+body.gl-tema-tudo :where(.application, .app.window-app) > .window-header,
+body.gl-tema-modulo .galrasia > .window-header {
+	background: var(--gl-copa);
+	border-bottom: 2px solid var(--gl-ambar);
+	color: var(--gl-osso);
+	text-shadow: 0 1px 2px #000;
+}
+
+body.gl-tema-tudo :where(.application, .app.window-app) > .window-header :where(.window-title, h1, h4),
+body.gl-tema-modulo .galrasia > .window-header :where(.window-title, h1, h4) {
+	font-family: var(--gl-fonte-titulo);
+	font-weight: 700;
+	letter-spacing: 0.06em;
+	color: var(--gl-ambar-2);
+}
+
+body.gl-tema-tudo :where(.application, .app.window-app) > .window-header :where(button, a, i),
+body.gl-tema-modulo .galrasia > .window-header :where(button, a, i) {
+	color: var(--gl-osso);
+}
+
+body.gl-tema-tudo :where(.application, .app.window-app) > .window-header :where(button, a):hover,
+body.gl-tema-modulo .galrasia > .window-header :where(button, a):hover {
+	color: var(--gl-ambar-2);
+	text-shadow: 0 0 6px var(--gl-ambar);
+}
+
+/* Moldura de todas as janelas */
+:where(body.gl-tema-tudo) :where(.application, .app.window-app),
+body.gl-tema-modulo .galrasia.application {
+	border: 1px solid rgba(201, 138, 27, 0.55);
+	border-radius: 8px;
+	box-shadow: 0 12px 32px rgba(0, 0, 0, 0.65), 0 0 0 1px rgba(0, 0, 0, 0.5);
+}
+
+/* ------------------------------------------------------------------ */
+/* Corpo das janelas escuras: folhagem à noite                         */
+/* ------------------------------------------------------------------ */
+:where(body.gl-tema-tudo.theme-dark .application:not(.theme-light), body.gl-tema-tudo .application.theme-dark, body.gl-tema-tudo .app.window-app.theme-dark),
+body.gl-tema-modulo .galrasia.application {
+	--color-text-primary: var(--gl-texto);
+	--color-text-secondary: var(--gl-texto-suave);
+	--color-text-subtle: rgba(230, 238, 220, 0.5);
+	--color-text-emphatic: var(--gl-osso);
+	--color-text-accent: var(--gl-ambar-2);
+	--color-border: var(--gl-traco);
+	--color-form-label: var(--gl-texto);
+	--color-form-hint: var(--gl-texto-suave);
+	--background: var(--gl-noite-2);
+	background: var(--gl-folhagem);
+	background-color: var(--gl-noite-2);
+	color: var(--gl-texto);
+}
+
+:where(body.gl-tema-tudo.theme-dark .application:not(.theme-light), body.gl-tema-tudo .application.theme-dark, body.gl-tema-tudo .app.window-app.theme-dark) > :where(.window-content),
+body.gl-tema-modulo .galrasia > .window-content {
+	background: transparent;
+}
+
+:where(body.gl-tema-tudo.theme-dark .application:not(.theme-light), body.gl-tema-tudo .application.theme-dark, body.gl-tema-tudo .app.window-app.theme-dark) :where(input[type="text"], input[type="number"], input[type="search"], input[type="password"], select, textarea),
+body.gl-tema-modulo .galrasia :where(input[type="text"], input[type="number"], input[type="search"], select, textarea) {
+	background: rgba(0, 0, 0, 0.35);
+	border: 1px solid var(--gl-traco);
+	color: var(--gl-texto);
+}
+
+:where(body.gl-tema-tudo.theme-dark .application:not(.theme-light), body.gl-tema-tudo .application.theme-dark, body.gl-tema-tudo .app.window-app.theme-dark) :where(input, select, textarea):focus,
+body.gl-tema-modulo .galrasia :where(input, select, textarea):focus {
+	border-color: var(--gl-ambar);
+	box-shadow: 0 0 0 1px var(--gl-ambar), 0 0 6px rgba(232, 180, 74, 0.5);
+	outline: none;
+}
+
+:where(body.gl-tema-tudo.theme-dark .application:not(.theme-light), body.gl-tema-tudo .application.theme-dark, body.gl-tema-tudo .app.window-app.theme-dark) :where(.window-content button, footer button, .form-footer button),
+body.gl-tema-modulo .galrasia :where(.window-content button) {
+	background: linear-gradient(180deg, var(--gl-selva-2), var(--gl-selva));
+	border: 1px solid rgba(201, 138, 27, 0.6);
+	color: var(--gl-osso);
+}
+
+:where(body.gl-tema-tudo.theme-dark .application:not(.theme-light), body.gl-tema-tudo .application.theme-dark, body.gl-tema-tudo .app.window-app.theme-dark) :where(.window-content button:hover, footer button:hover, .form-footer button:hover),
+body.gl-tema-modulo .galrasia :where(.window-content button:hover) {
+	border-color: var(--gl-ambar-2);
+	box-shadow: 0 0 0 1px var(--gl-ambar), 0 0 8px rgba(232, 180, 74, 0.55);
+}
+
+:where(body.gl-tema-tudo.theme-dark .application:not(.theme-light), body.gl-tema-tudo .application.theme-dark, body.gl-tema-tudo .app.window-app.theme-dark) :where(nav.tabs, .sheet-tabs) :where(.item, a)[class~="active"] {
+	color: var(--gl-ambar-2);
+	text-shadow: 0 0 6px rgba(232, 180, 74, 0.45);
+	border-color: var(--gl-ambar);
+}
+
+:where(body.gl-tema-tudo.theme-dark .application:not(.theme-light), body.gl-tema-tudo .application.theme-dark, body.gl-tema-tudo .app.window-app.theme-dark) :where(h1, h2, h3, h4, legend) {
+	font-family: var(--gl-fonte-titulo);
+	letter-spacing: 0.03em;
+}
+
+:where(body.gl-tema-tudo.theme-dark .application:not(.theme-light), body.gl-tema-tudo .application.theme-dark, body.gl-tema-tudo .app.window-app.theme-dark) :where(a.content-link, a.inline-roll) {
+	background: rgba(143, 191, 90, 0.14);
+	border-color: var(--gl-traco);
+	color: var(--gl-texto);
+}
+
+/* ------------------------------------------------------------------ */
+/* Interface do Foundry (só no modo "tudo")                            */
+/* ------------------------------------------------------------------ */
+:where(body.gl-tema-tudo) :where(#sidebar-content, #players-active, #players-inactive, #context-menu, #tooltip, .locked-tooltip) {
+	--color-text-primary: var(--gl-texto);
+	--color-text-secondary: var(--gl-texto-suave);
+	--color-text-subtle: rgba(230, 238, 220, 0.5);
+	--color-border: var(--gl-traco);
+	background: var(--gl-folhagem);
+	background-color: var(--gl-noite-2);
+	color: var(--gl-texto);
+	border: 1px solid rgba(201, 138, 27, 0.45);
+	box-shadow: 0 6px 18px rgba(0, 0, 0, 0.6);
+}
+
+:where(body.gl-tema-tudo) :where(#sidebar-content) {
+	border-top: 3px solid var(--gl-ambar);
+	border-bottom: 3px solid var(--gl-ambar);
+	border-radius: 6px;
+}
+
+:where(body.gl-tema-tudo) :where(#sidebar-content) :where(.sidebar-tab, .directory-header, .directory-footer, .directory-list, .chat-log) {
+	background: transparent;
+	color: var(--gl-texto);
+}
+
+:where(body.gl-tema-tudo) :where(#sidebar-content) :where(.directory-item:hover, .directory-item.active) {
+	background: rgba(143, 191, 90, 0.12);
+}
+
+:where(body.gl-tema-tudo) :where(#sidebar-content) :where(.folder-header) {
+	background: linear-gradient(90deg, rgba(46, 107, 71, 0.85), rgba(31, 77, 51, 0.6));
+	border-bottom: 1px solid rgba(201, 138, 27, 0.35);
+	color: var(--gl-osso);
+}
+
+:where(body.gl-tema-tudo) :where(#sidebar-content) :where(input, select, textarea) {
+	background: rgba(0, 0, 0, 0.35);
+	border: 1px solid var(--gl-traco);
+	color: var(--gl-texto);
+}
+
+:where(body.gl-tema-tudo) :where(#sidebar-content) :where(button) {
+	background: linear-gradient(180deg, var(--gl-selva-2), var(--gl-selva));
+	border: 1px solid rgba(201, 138, 27, 0.55);
+	color: var(--gl-osso);
+}
+
+:where(body.gl-tema-tudo) :where(#sidebar-content) :where(button:hover) {
+	box-shadow: 0 0 0 1px var(--gl-ambar), 0 0 8px rgba(232, 180, 74, 0.5);
+}
+
+/* Mensagens do chat: cartão de folha com marca de âmbar */
+:where(body.gl-tema-tudo) :where(.chat-message) {
+	--color-text-primary: var(--gl-texto);
+	--color-text-secondary: var(--gl-texto-suave);
+	background: linear-gradient(180deg, rgba(31, 77, 51, 0.55), rgba(18, 33, 26, 0.92));
+	color: var(--gl-texto);
+	border: 1px solid var(--gl-traco);
+	border-left: 3px solid var(--gl-ambar);
+	border-radius: 4px;
+}
+
+:where(body.gl-tema-tudo) :where(.chat-message.whisper) {
+	border-left-color: var(--gl-esmeralda);
+}
+
+:where(body.gl-tema-tudo) :where(.chat-message) :where(.message-sender, .message-header h4) {
+	font-family: var(--gl-fonte-titulo);
+	color: var(--gl-ambar-2);
+}
+
+:where(body.gl-tema-tudo) :where(.chat-message) :where(.message-metadata, .message-timestamp) {
+	color: var(--gl-texto-suave);
+}
+
+:where(body.gl-tema-tudo) :where(.chat-message) :where(.dice-total, .dice-formula) {
+	background: rgba(0, 0, 0, 0.3);
+	border: 1px solid var(--gl-traco);
+	color: var(--gl-osso);
+}
+
+:where(body.gl-tema-tudo) :where(.chat-message) :where(.dice-total.critical) {
+	color: var(--gl-broto);
+	text-shadow: 0 0 6px rgba(143, 191, 90, 0.6);
+}
+
+:where(body.gl-tema-tudo) :where(.chat-message) :where(.dice-total.fumble) {
+	color: #ff8a5c;
+}
+
+/* Botões da interface: controles de cena, abas da barra lateral, navegação, macros */
+:where(body.gl-tema-tudo) :where(#interface) :where(.ui-control),
+:where(body.gl-tema-tudo) :where(#hotbar) :where(.slot) {
+	--control-bg-color: var(--gl-noite-3);
+	--control-border-color: rgba(201, 138, 27, 0.45);
+	--control-icon-color: var(--gl-osso);
+	--control-hover-bg-color: var(--gl-selva);
+	--control-hover-border-color: var(--gl-ambar-2);
+	--control-hover-icon-color: var(--gl-ambar-2);
+	--control-active-bg-color: var(--gl-ambar);
+	--control-active-border-color: var(--gl-ambar-2);
+	--control-active-icon-color: var(--gl-noite);
+	background: linear-gradient(180deg, var(--gl-selva) 0%, var(--gl-noite-3) 100%);
+	border: 1px solid rgba(201, 138, 27, 0.45);
+	color: var(--gl-osso);
+	box-shadow: 0 2px 5px rgba(0, 0, 0, 0.55);
+}
+
+:where(body.gl-tema-tudo) :where(#interface) :where(.ui-control:hover),
+:where(body.gl-tema-tudo) :where(#hotbar) :where(.slot:hover) {
+	background: linear-gradient(180deg, var(--gl-selva-2), var(--gl-selva));
+	border-color: var(--gl-ambar-2);
+	color: var(--gl-ambar-2);
+	box-shadow: 0 0 8px rgba(143, 191, 90, 0.55), 0 2px 5px rgba(0, 0, 0, 0.55);
+}
+
+:where(body.gl-tema-tudo) :where(#interface) :where(.ui-control.active, .ui-control[aria-pressed="true"], .ui-control.toggle.active) {
+	background: linear-gradient(180deg, var(--gl-ambar-2), var(--gl-ambar));
+	border-color: #f3d27a;
+	color: var(--gl-noite);
+	box-shadow: 0 0 0 1px var(--gl-ambar), 0 0 10px rgba(232, 180, 74, 0.55);
+}
+
+:where(body.gl-tema-tudo) :where(#scene-navigation) :where(.ui-control, .scene) {
+	font-family: var(--gl-fonte-titulo);
+	letter-spacing: 0.04em;
+}
+
+:where(body.gl-tema-tudo) :where(#context-menu) :where(.context-item:hover) {
+	background: rgba(143, 191, 90, 0.16);
+	color: var(--gl-ambar-2);
+}
+
+:where(body.gl-tema-tudo) :where(#tooltip, .locked-tooltip) {
+	border-radius: 6px;
+}
+
+/* Índice lateral dos diários */
+body.gl-tema-tudo .journal-entry .journal-sidebar .toc .page.active > .page-heading :is(.page-title, .page-number) {
+	color: var(--gl-ambar-2);
+	font-weight: bold;
+}
+
+/* Diários: títulos em Cinzel */
+:where(body.gl-tema-tudo) :where(.journal-entry-page) :where(h1, h2, h3) {
+	font-family: var(--gl-fonte-titulo);
+	color: var(--gl-ambar-2);
+}
+
+/* Pausa: o texto ganha a seiva âmbar */
+:where(body.gl-tema-tudo) :where(#pause) :where(figcaption, label) {
+	font-family: var(--gl-fonte-titulo);
+	color: var(--gl-ambar-2);
+	text-shadow: 0 0 8px #000, 0 0 16px rgba(201, 138, 27, 0.6);
+}
+
+/* Barra de rolagem */
+:where(body.gl-tema-tudo) * {
+	scrollbar-color: rgba(143, 191, 90, 0.45) transparent;
+}

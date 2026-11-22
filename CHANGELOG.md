@@ -1,5 +1,10 @@
 # Changelog
 
+## 1.1.0
+
+- **Tema Galrasia para o Foundry**, a selva à noite: cabeçalho das janelas em copa esmeralda com faixa de âmbar e título em Cinzel; corpo das janelas, barra lateral, menus e dicas em folhagem escura; mensagens do chat em cartões de folha com marca âmbar (sussurros em esmeralda, críticos em verde e falhas em brasa); botões dos controles de cena, da barra lateral e da barra de macros em verde, com âmbar quando ativos.
+- Nova configuração *Tema Galrasia*, por navegador: Foundry inteiro (padrão), só as janelas do módulo ou desligado. Fichas que usam o tema claro do Foundry ganham só a moldura e o cabeçalho, para não ficarem ilegíveis.
+
 ## 1.0.0
 
 - **Vigília de Galrasia**: painéis flutuantes de personagens (Expedição) e ameaças no tema de Galrasia, iguais aos do Academia Arcana: arrastar, recolher, clique duplo para voltar à posição padrão e minimizar num ícone redondo que pode ser preso num canto da tela.

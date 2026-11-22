@@ -14,6 +14,10 @@ https://github.com/fernandowrpg/t20-galrasia-modulo/releases/latest/download/mod
 
 Ative o módulo no mundo em *Gerenciar Módulos*.
 
+## Tema Galrasia
+
+A interface do Foundry ganha o visual da selva à noite: cabeçalho das janelas em copa esmeralda com faixa de âmbar, corpo das janelas, barra lateral e chat em folhagem escura, botões em verde e âmbar. Em *Configurações → Galrasia → Tema Galrasia* cada usuário escolhe: Foundry inteiro (padrão), só as janelas do módulo ou desligado (recarrega a página).
+
 ## Vigília
 
 Dois painéis flutuantes, sempre visíveis, no tema de Galrasia (copa esmeralda, borda âmbar, PV em verde/âmbar/brasa, PM em turquesa).
