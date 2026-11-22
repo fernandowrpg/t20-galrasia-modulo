@@ -1,5 +1,11 @@
 # Changelog
 
+## 1.2.0
+
+- **Mapa de Lysianassa: cada local é uma região própria.** Os 26 locais podem ser revelados um a um; os 12 distritos viram grupos. No painel de revelação, a caixa do distrito marca ou desmarca todos os locais dele de uma vez.
+- **O nome da cidade fica sempre visível**: a cartela *Lysianassa* é desenhada por cima da névoa.
+- Cenas criadas em versões anteriores (uma região por distrito) são detectadas: ao criar a cena ou abrir o painel de revelação, o módulo oferece recriar a cena e o diário no formato novo. Pelo console: `game.modules.get("t20-galrasia-modulo").api.lysianassa.recriarCena()`.
+
 ## 1.1.2
 
 - Pintura rupestre da tela de entrada: as mãos estampadas tinham seis dedos (uma curva na lateral da palma parecia mais um dedo). Agora cada mão tem quatro dedos e o polegar. Se você já aplicou a imagem no mundo, não precisa mudar nada no Setup: o caminho é o mesmo, basta atualizar o módulo.

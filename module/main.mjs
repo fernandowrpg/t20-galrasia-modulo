@@ -23,7 +23,7 @@ Hooks.once("init", () => {
 		painelPersonagens: () => PainelPersonagensApp.sincronizar(),
 		painelAmeacas: () => PainelAmeacasApp.sincronizar(),
 		telaEntrada: () => new TelaEntradaApp().render({ force: true }),
-		lysianassa: { criarCena: lysianassa.criarCena, revelar: lysianassa.revelar, painel: lysianassa.painel, dados: lysianassa.dados },
+		lysianassa: { criarCena: lysianassa.criarCena, recriarCena: lysianassa.recriarCena, revelar: lysianassa.revelar, revelarVarios: lysianassa.revelarVarios, painel: lysianassa.painel, dados: lysianassa.dados },
 		logica
 	};
 });

@@ -39,10 +39,11 @@ Em *Configurações → Galrasia → Tela de entrada*, copie o caminho da imagem
 
 ## Mapa de Lysianassa
 
-Mapa da cidade com 12 regiões cobertas por névoa e 26 locais em pins coloridos (verde = aliados, amarelo = neutro, vermelho = inimigos).
+Mapa da cidade com 26 locais em pins coloridos (verde = aliados, amarelo = neutro, vermelho = inimigos). Cada local é uma região própria, coberta por névoa até ser revelada; os locais ficam agrupados em 12 distritos. O nome da cidade fica sempre visível.
 
 1. Rode a macro **Lysianassa: criar cena** (criada sozinha na primeira vez que o mestre abre o mundo).
-2. Para revelar regiões: botão de mapa nas ferramentas de **Notas**, ou a macro **Lysianassa: revelar regiões**. A névoa da região some e os pins dela aparecem para os jogadores.
+2. Para revelar: botão de mapa nas ferramentas de **Notas**, ou a macro **Lysianassa: revelar regiões**. Marque locais um a um ou o distrito inteiro. A névoa some e os pins aparecem para os jogadores.
+3. Se a cena foi criada numa versão anterior à 1.2.0, o módulo oferece recriá-la no formato novo.
 
 ## Desenvolvimento
 

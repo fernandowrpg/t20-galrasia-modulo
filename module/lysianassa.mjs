@@ -2,12 +2,15 @@
  * Lysianassa — mapa revelável.
  *
  * Cria uma cena com o mapa, um diário com uma página por local e uma nota (pin) por local.
- * Cada região começa coberta por um desenho opaco. Revelar a região esconde o desenho
- * e libera as páginas (e portanto os pins) daquela região para os jogadores.
+ * Cada local é uma região própria, coberta por um desenho opaco (névoa). Revelar o local esconde
+ * o desenho e libera a página (e portanto o pin) para os jogadores. A cartela com o nome da
+ * cidade é um desenho acima da névoa: fica sempre visível.
  */
 import { MODULO } from "./config.mjs";
 
 const PASTA = `modules/${MODULO}/assets/lysianassa`;
+/* Versão do formato da cena. 2 = uma região por local e cartela do nome sempre visível. */
+const VERSAO = 2;
 const NIVEL = () => CONST.DOCUMENT_OWNERSHIP_LEVELS;
 const CORES = { verde: "Aliados", amarelo: "Neutro", vermelho: "Inimigos" };
 const HEX = { verde: "#3fae5a", amarelo: "#e3b23c", vermelho: "#c9402b" };
@@ -21,33 +24,48 @@ export async function dados() {
 const acharCena = () => game.scenes.find((s) => s.getFlag(MODULO, "lysianassa"));
 const acharDiario = () => game.journal.find((j) => j.getFlag(MODULO, "lysianassa"));
 
+function desenhoDoPoligono(poligono) {
+	const xs = poligono.map((p) => p[0]);
+	const ys = poligono.map((p) => p[1]);
+	const x = Math.min(...xs);
+	const y = Math.min(...ys);
+	return {
+		x,
+		y,
+		shape: { type: "p", width: Math.max(...xs) - x, height: Math.max(...ys) - y, points: poligono.flatMap(([px, py]) => [px - x, py - y]) }
+	};
+}
+
 export async function criarCena() {
 	if (!game.user.isGM) return ui.notifications.warn("Só o mestre pode criar a cena de Lysianassa.");
 	const d = await dados();
 	const existente = acharCena();
 	if (existente) {
+		if ((existente.getFlag(MODULO, "versao") ?? 1) < VERSAO) return oferecerRecriar(existente);
 		ui.notifications.info("A cena de Lysianassa já existe — abrindo.");
 		return existente.view();
 	}
 
-	// Diário: uma página por pin, todas escondidas dos jogadores.
+	// Diário: uma página por local, todas escondidas dos jogadores.
 	let diario = acharDiario();
 	if (!diario) {
-		const regioes = Object.fromEntries(d.regioes.map((r) => [r.id, r]));
 		diario = await JournalEntry.create({
 			name: "Lysianassa — Locais",
 			ownership: { default: NIVEL().LIMITED },
-			flags: { [MODULO]: { lysianassa: true } },
-			pages: d.pins.map((p, i) => ({
-				name: p.nome,
-				type: "text",
-				sort: (i + 1) * 100,
-				ownership: { default: NIVEL().NONE },
-				text: {
-					content: `<p><span style="background:${HEX[p.cor]};color:#fff;border-radius:999px;padding:1px 8px;font-weight:bold">${CORES[p.cor]}</span> · <em>${regioes[p.regiao].nome}</em></p><p>${p.descricao}</p>`
-				},
-				flags: { [MODULO]: { pin: p.id, regiao: p.regiao } }
-			}))
+			flags: { [MODULO]: { lysianassa: true, versao: VERSAO } },
+			pages: d.pins.map((p, i) => {
+				const regiao = d.regioes.find((r) => r.id === p.regiao);
+				return {
+					name: p.nome,
+					type: "text",
+					sort: (i + 1) * 100,
+					ownership: { default: NIVEL().NONE },
+					text: {
+						content: `<p><span style="background:${HEX[p.cor]};color:#fff;border-radius:999px;padding:1px 8px;font-weight:bold">${CORES[p.cor]}</span> · <em>${regiao?.distritoNome ?? ""}</em></p><p>${p.descricao}</p>`
+					},
+					flags: { [MODULO]: { pin: p.id, regiao: p.regiao } }
+				};
+			})
 		});
 	}
 	const paginaDe = Object.fromEntries(diario.pages.map((pg) => [pg.getFlag(MODULO, "pin"), pg]));
@@ -63,34 +81,42 @@ export async function criarCena() {
 		tokenVision: false,
 		fog: { exploration: false },
 		initial: { x: d.largura / 2, y: d.altura / 2, scale: 0.25 },
-		flags: { [MODULO]: { lysianassa: true, reveladas: [] } }
+		flags: { [MODULO]: { lysianassa: true, versao: VERSAO, reveladas: [] } }
 	});
 
-	// Névoa: um desenho opaco por região.
-	await cena.createEmbeddedDocuments(
-		"Drawing",
-		d.regioes.map((r) => {
-			const xs = r.poligono.map((p) => p[0]);
-			const ys = r.poligono.map((p) => p[1]);
-			const x = Math.min(...xs);
-			const y = Math.min(...ys);
-			return {
-				x,
-				y,
-				shape: { type: "p", width: Math.max(...xs) - x, height: Math.max(...ys) - y, points: r.poligono.flatMap(([px, py]) => [px - x, py - y]) },
-				fillType: CONST.DRAWING_FILL_TYPES.PATTERN,
-				fillColor: "#ffffff",
-				fillAlpha: 1,
-				texture: `${PASTA}/nevoa.webp`,
-				strokeWidth: 10,
-				strokeColor: "#0f1d15",
-				strokeAlpha: 1,
-				locked: true,
-				hidden: false,
-				flags: { [MODULO]: { regiao: r.id } }
-			};
-		})
-	);
+	// Névoa: um desenho opaco por local. Por cima de tudo, a cartela com o nome da cidade.
+	const t = d.titulo;
+	await cena.createEmbeddedDocuments("Drawing", [
+		...d.regioes.map((r) => ({
+			...desenhoDoPoligono(r.poligono),
+			sort: 0,
+			fillType: CONST.DRAWING_FILL_TYPES.PATTERN,
+			fillColor: "#ffffff",
+			fillAlpha: 1,
+			texture: `${PASTA}/nevoa.webp`,
+			strokeWidth: 10,
+			strokeColor: "#0f1d15",
+			strokeAlpha: 1,
+			locked: true,
+			hidden: false,
+			flags: { [MODULO]: { regiao: r.id } }
+		})),
+		{
+			x: t.x,
+			y: t.y,
+			sort: 100,
+			shape: { type: "r", width: t.largura, height: t.altura },
+			fillType: CONST.DRAWING_FILL_TYPES.PATTERN,
+			fillColor: "#ffffff",
+			fillAlpha: 1,
+			texture: `${PASTA}/${t.imagem}`,
+			strokeWidth: 0,
+			strokeAlpha: 0,
+			locked: true,
+			hidden: false,
+			flags: { [MODULO]: { titulo: true } }
+		}
+	]);
 
 	// Pins: uma nota por local, ligada à página do diário.
 	await cena.createEmbeddedDocuments(
@@ -111,27 +137,50 @@ export async function criarCena() {
 		}))
 	);
 
-	ui.notifications.info("Cena de Lysianassa criada. Use o botão de mapa na barra de Notas para revelar regiões.");
+	ui.notifications.info("Cena de Lysianassa criada. Use o botão de mapa na barra de Notas para revelar os locais.");
 	return cena.view();
 }
 
+/* Cenas criadas antes da 1.2.0 tinham uma região por distrito: oferece recriar no formato novo. */
+async function oferecerRecriar(cena) {
+	const ok = await foundry.applications.api.DialogV2.confirm({
+		window: { title: "Lysianassa: mapa atualizado" },
+		content: "<p>O mapa de Lysianassa mudou: agora <strong>cada local é uma região própria</strong> e o nome da cidade fica sempre visível.</p><p>Recriar a cena e o diário de locais? O que já foi revelado volta a ficar coberto.</p>",
+		rejectClose: false
+	});
+	if (!ok) return cena.view();
+	await recriarCena();
+}
+
+export async function recriarCena() {
+	if (!game.user.isGM) return;
+	await acharCena()?.delete();
+	await acharDiario()?.delete();
+	return criarCena();
+}
+
 export async function revelar(regiaoId, valor = true) {
+	return revelarVarios({ [regiaoId]: valor });
+}
+
+/* Revela ou esconde vários locais de uma vez: { idDoLocal: true|false }. */
+export async function revelarVarios(mudancas) {
 	if (!game.user.isGM) return;
 	const cena = acharCena();
 	const diario = acharDiario();
 	if (!cena || !diario) return ui.notifications.warn("Crie a cena de Lysianassa primeiro.");
 
-	const desenhos = cena.drawings.filter((dr) => dr.getFlag(MODULO, "regiao") === regiaoId);
-	await cena.updateEmbeddedDocuments("Drawing", desenhos.map((dr) => ({ _id: dr.id, hidden: valor })));
+	const desenhos = cena.drawings.filter((dr) => dr.getFlag(MODULO, "regiao") in mudancas);
+	await cena.updateEmbeddedDocuments("Drawing", desenhos.map((dr) => ({ _id: dr.id, hidden: !!mudancas[dr.getFlag(MODULO, "regiao")] })));
 
-	const paginas = diario.pages.filter((pg) => pg.getFlag(MODULO, "regiao") === regiaoId);
+	const paginas = diario.pages.filter((pg) => pg.getFlag(MODULO, "regiao") in mudancas);
 	await diario.updateEmbeddedDocuments(
 		"JournalEntryPage",
-		paginas.map((pg) => ({ _id: pg.id, "ownership.default": valor ? NIVEL().OBSERVER : NIVEL().NONE }))
+		paginas.map((pg) => ({ _id: pg.id, "ownership.default": mudancas[pg.getFlag(MODULO, "regiao")] ? NIVEL().OBSERVER : NIVEL().NONE }))
 	);
 
 	const atual = new Set(cena.getFlag(MODULO, "reveladas") ?? []);
-	valor ? atual.add(regiaoId) : atual.delete(regiaoId);
+	for (const [id, valor] of Object.entries(mudancas)) valor ? atual.add(id) : atual.delete(id);
 	await cena.setFlag(MODULO, "reveladas", [...atual]);
 }
 
@@ -139,21 +188,40 @@ export async function painel() {
 	if (!game.user.isGM) return;
 	const cena = acharCena();
 	if (!cena) return criarCena();
+	if ((cena.getFlag(MODULO, "versao") ?? 1) < VERSAO) return oferecerRecriar(cena);
 	const d = await dados();
 	const reveladas = new Set(cena.getFlag(MODULO, "reveladas") ?? []);
-	const linhas = d.regioes
-		.map(
-			(r) => `<label style="display:flex;align-items:center;gap:8px;padding:4px 0">
-				<input type="checkbox" name="${r.id}" ${reveladas.has(r.id) ? "checked" : ""}>
-				<span style="width:10px;height:10px;border-radius:50%;background:${HEX[r.cor]};display:inline-block"></span>
-				<span><strong>${r.nome}</strong><br><small>${d.pins.filter((p) => p.regiao === r.id).map((p) => p.nome).join(" · ")}</small></span>
-			</label>`
-		)
+	const grupos = d.distritos
+		.map((dist) => {
+			const locais = d.regioes.filter((r) => r.distrito === dist.id);
+			const itens = locais
+				.map(
+					(r) => `<label style="display:flex;align-items:center;gap:8px;padding:2px 0 2px 22px">
+						<input type="checkbox" name="${r.id}" data-distrito="${dist.id}" ${reveladas.has(r.id) ? "checked" : ""}>
+						<span style="width:10px;height:10px;border-radius:50%;background:${HEX[r.cor]};display:inline-block;flex:none"></span>
+						<span>${r.nome}</span>
+					</label>`
+				)
+				.join("");
+			const todos = locais.every((r) => reveladas.has(r.id));
+			return `<fieldset style="margin:0 0 6px;padding:4px 8px">
+				<legend><label style="display:flex;align-items:center;gap:6px;font-weight:bold">
+					<input type="checkbox" class="gl-distrito" data-distrito="${dist.id}" ${todos ? "checked" : ""}> ${dist.nome}
+				</label></legend>${itens}</fieldset>`;
+		})
 		.join("");
 	const escolha = await foundry.applications.api.DialogV2.wait({
-		window: { title: "Lysianassa — regiões reveladas", icon: "fa-solid fa-map-location-dot" },
-		position: { width: 460 },
-		content: `<p>Marque as regiões que os jogadores podem ver.</p><div style="max-height:60vh;overflow:auto">${linhas}</div>`,
+		window: { title: "Lysianassa — locais revelados", icon: "fa-solid fa-map-location-dot" },
+		position: { width: 480 },
+		content: `<p>Marque os locais que os jogadores podem ver. A caixa do distrito marca todos os locais dele.</p><div style="max-height:62vh;overflow:auto">${grupos}</div>`,
+		render: (event, dialog) => {
+			const raiz = dialog.element ?? event?.target?.element;
+			raiz?.querySelectorAll("input.gl-distrito").forEach((caixa) =>
+				caixa.addEventListener("change", () => {
+					raiz.querySelectorAll(`input[data-distrito="${caixa.dataset.distrito}"]:not(.gl-distrito)`).forEach((c) => (c.checked = caixa.checked));
+				})
+			);
+		},
 		buttons: [
 			{
 				action: "aplicar",
@@ -167,10 +235,9 @@ export async function painel() {
 		rejectClose: false
 	});
 	if (!escolha || typeof escolha !== "object") return;
-	for (const [id, valor] of Object.entries(escolha)) {
-		if (valor !== reveladas.has(id)) await revelar(id, valor);
-	}
-	ui.notifications.info("Regiões de Lysianassa atualizadas.");
+	const mudancas = Object.fromEntries(Object.entries(escolha).filter(([id, valor]) => valor !== reveladas.has(id)));
+	if (Object.keys(mudancas).length) await revelarVarios(mudancas);
+	ui.notifications.info("Locais de Lysianassa atualizados.");
 }
 
 export function registrarLysianassa() {
@@ -180,7 +247,7 @@ export function registrarLysianassa() {
 		if (!notas) return;
 		const ferramenta = {
 			name: "galrasia-lysianassa",
-			title: "Lysianassa: revelar regiões",
+			title: "Lysianassa: revelar locais",
 			icon: "fa-solid fa-map-location-dot",
 			button: true,
 			visible: true,

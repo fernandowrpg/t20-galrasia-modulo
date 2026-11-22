@@ -1,14 +1,103 @@
 {
  "nome": "Lysianassa",
+ "versao": 2,
  "largura": 4000,
  "altura": 3000,
  "grade": 100,
- "regioes": [
+ "imagem": "lysianassa.webp",
+ "titulo": {
+  "imagem": "lysianassa-titulo.webp",
+  "x": 110,
+  "y": 2730,
+  "largura": 760,
+  "altura": 190
+ },
+ "distritos": [
   {
    "id": "ancoradouro",
    "nome": "Ancoradouro das Raízes",
    "cor": "amarelo",
-   "descricao": "O porto da cidade e a lagoa turquesa. Píeres crescidos de raízes de mangue recebem os navios vindos de Nova Malpetrim.",
+   "descricao": "O porto da cidade e a lagoa turquesa. Píeres crescidos de raízes de mangue recebem os navios vindos de Nova Malpetrim."
+  },
+  {
+   "id": "mercado",
+   "nome": "Mercado das Copas",
+   "cor": "amarelo",
+   "descricao": "Plataformas de comércio sob as copas, entre o porto e o bosque sagrado. Tudo que entra e sai de Galrasia passa por aqui."
+  },
+  {
+   "id": "folhas-novas",
+   "nome": "Folhas Novas",
+   "cor": "amarelo",
+   "descricao": "O bairro dos estrangeiros. Casas-casulo que as Oqamm fizeram brotar para os colonos que chegaram nos primeiros navios."
+  },
+  {
+   "id": "arvore-mae",
+   "nome": "Bosque da Árvore-Mãe",
+   "cor": "verde",
+   "descricao": "O coração vivo da cidade: uma ilhota no rio dominada por uma árvore colossal, santuário de Allihanna."
+  },
+  {
+   "id": "mascaras",
+   "nome": "Recanto das Máscaras",
+   "cor": "verde",
+   "descricao": "Bosque fechado onde vivem e meditam as druidas Oqamm. Visitantes só entram a convite."
+  },
+  {
+   "id": "oficinas",
+   "nome": "Oficinas da Seiva",
+   "cor": "amarelo",
+   "descricao": "Ateliês de artesãos, curtumes e o único lugar da cidade onde se trabalha metal — trazido do continente."
+  },
+  {
+   "id": "currais",
+   "nome": "Currais de Feras",
+   "cor": "vermelho",
+   "descricao": "Cercados de madeira viva onde ficam as feras capturadas à espera de embarque. Barulhento, fedorento e perigoso."
+  },
+  {
+   "id": "muralha",
+   "nome": "Muralha Viva",
+   "cor": "verde",
+   "descricao": "A muralha de troncos entrelaçados que protege o lado da selva, com o Portão do Rio e o Portão da Selva."
+  },
+  {
+   "id": "selva",
+   "nome": "Selva Além da Muralha",
+   "cor": "vermelho",
+   "descricao": "O Inferno Verde começa a um passo do portão. Árvores ciclópicas, lagartos-terror e tribos que não querem visitantes."
+  },
+  {
+   "id": "rochedo",
+   "nome": "Rochedo dos Pteros",
+   "cor": "verde",
+   "descricao": "Penhascos ao norte do porto onde casais de pteros fazem seus ninhos e vigiam o mar."
+  },
+  {
+   "id": "enseada",
+   "nome": "Enseada da Maré Torta",
+   "cor": "vermelho",
+   "descricao": "Uma angra escondida ao sul, fora da muralha, onde atracam barcos que preferem não passar pela capitania."
+  },
+  {
+   "id": "mar",
+   "nome": "Mar Negro",
+   "cor": "amarelo",
+   "descricao": "As águas escuras que separam Galrasia de Nova Malpetrim: rota de comerciantes, piratas e monstros marinhos."
+  }
+ ],
+ "regioes": [
+  {
+   "id": "capitania-das-raizes",
+   "nome": "Capitania das Raízes",
+   "cor": "amarelo",
+   "descricao": "Registra cada navio, cobra a taxa de atracação e anota quem desembarca. O capitão do porto é humano, de Nova Malpetrim.",
+   "distrito": "ancoradouro",
+   "distritoNome": "Ancoradouro das Raízes",
+   "rotulo": [
+    3073,
+    1136
+   ],
    "poligono": [
     [
      2700,
@@ -27,16 +116,42 @@
      1300
     ],
     [
-     3480,
-     1700
+     3492,
+     1463
     ],
     [
-     3430,
-     2400
+     3267,
+     1521
     ],
     [
-     3100,
-     2500
+     2526,
+     1481
+    ],
+    [
+     2620,
+     1180
+    ]
+   ]
+  },
+  {
+   "id": "pier-dos-exploradores",
+   "nome": "Píer dos Exploradores",
+   "cor": "verde",
+   "descricao": "Onde as expedições embarcam e desembarcam. Um quadro de raízes guarda contratos, mapas rasgados e recados de desaparecidos.",
+   "distrito": "ancoradouro",
+   "distritoNome": "Ancoradouro das Raízes",
+   "rotulo": [
+    2838,
+    1854
+   ],
+   "poligono": [
+    [
+     3267,
+     1521
+    ],
+    [
+     2848,
+     2384
     ],
     [
      2560,
@@ -51,24 +166,64 @@
      1500
     ],
     [
-     2620,
-     1180
+     2526,
+     1481
     ]
-   ],
-   "rotulo": [
-    3020,
-    1500
    ]
   },
   {
-   "id": "mercado",
-   "nome": "Mercado das Copas",
+   "id": "taverna-da-casca-oca",
+   "nome": "Taverna da Casca Oca",
    "cor": "amarelo",
-   "descricao": "Plataformas de comércio sob as copas, entre o porto e o bosque sagrado. Tudo que entra e sai de Galrasia passa por aqui.",
+   "descricao": "Dentro de um tronco oco à beira da lagoa. Marinheiros, caçadores e guias thera bebem lado a lado — nem sempre em paz.",
+   "distrito": "ancoradouro",
+   "distritoNome": "Ancoradouro das Raízes",
+   "rotulo": [
+    3235,
+    2046
+   ],
    "poligono": [
     [
-     1750,
-     760
+     3267,
+     1521
+    ],
+    [
+     3492,
+     1463
+    ],
+    [
+     3480,
+     1700
+    ],
+    [
+     3430,
+     2400
+    ],
+    [
+     3100,
+     2500
+    ],
+    [
+     2848,
+     2384
+    ]
+   ]
+  },
+  {
+   "id": "mercado-das-copas",
+   "nome": "Mercado das Copas",
+   "cor": "amarelo",
+   "descricao": "Frutas que ninguém no continente sabe nomear, seda da Floresta de Seda, penas, ossos e escamas. Metal vale ouro aqui.",
+   "distrito": "mercado",
+   "distritoNome": "Mercado das Copas",
+   "rotulo": [
+    2308,
+    1039
+   ],
+   "poligono": [
+    [
+     2093,
+     878
     ],
     [
      2100,
@@ -79,12 +234,72 @@
      860
     ],
     [
+     2671,
+     977
+    ],
+    [
+     2190,
+     1303
+    ],
+    [
+     1999,
+     1189
+    ]
+   ]
+  },
+  {
+   "id": "ervanario-seiva-doce",
+   "nome": "Ervanário Seiva-Doce",
+   "cor": "verde",
+   "descricao": "Uma dahllan aposentada das Oqamm vende remédios, antídotos e ingredientes alquímicos colhidos com respeito.",
+   "distrito": "mercado",
+   "distritoNome": "Mercado das Copas",
+   "rotulo": [
+    2463,
+    1259
+   ],
+   "poligono": [
+    [
+     2671,
+     977
+    ],
+    [
      2620,
      1180
     ],
     [
      2520,
      1500
+    ],
+    [
+     2190,
+     1303
+    ]
+   ]
+  },
+  {
+   "id": "casa-de-cambio-de-malpetrim",
+   "nome": "Casa de Câmbio de Malpetrim",
+   "cor": "amarelo",
+   "descricao": "Agentes de mercadores de Nova Malpetrim compram espécimes vivos e financiam expedições — por uma parte do lucro.",
+   "distrito": "mercado",
+   "distritoNome": "Mercado das Copas",
+   "rotulo": [
+    1833,
+    978
+   ],
+   "poligono": [
+    [
+     1750,
+     760
+    ],
+    [
+     2093,
+     878
+    ],
+    [
+     1999,
+     1189
     ],
     [
      1950,
@@ -100,7 +315,13 @@
    "id": "folhas-novas",
    "nome": "Folhas Novas",
    "cor": "amarelo",
-   "descricao": "O bairro dos estrangeiros. Casas-casulo que as Oqamm fizeram brotar para os colonos que chegaram nos primeiros navios.",
+   "descricao": "Casas-casulo nos galhos e passarelas entre as copas. Vivem aqui colonos de todo o Reinado tentando a sorte no Mundo Perdido.",
+   "distrito": "folhas-novas",
+   "distritoNome": "Folhas Novas",
+   "rotulo": [
+    2193,
+    612
+   ],
    "poligono": [
     [
      1900,
@@ -109,6 +330,40 @@
     [
      2500,
      380
+    ],
+    [
+     2576,
+     393
+    ],
+    [
+     2554,
+     865
+    ],
+    [
+     2100,
+     880
+    ],
+    [
+     1750,
+     760
+    ]
+   ]
+  },
+  {
+   "id": "posto-dos-cartografos",
+   "nome": "Posto dos Cartógrafos",
+   "cor": "verde",
+   "descricao": "Seguidores de Tanna-Toh compram relatos de exploradores e vendem cópias dos mapas mais confiáveis da ilha.",
+   "distrito": "folhas-novas",
+   "distritoNome": "Folhas Novas",
+   "rotulo": [
+    2784,
+    636
+   ],
+   "poligono": [
+    [
+     2576,
+     393
     ],
     [
      2900,
@@ -123,28 +378,26 @@
      860
     ],
     [
-     2100,
-     880
-    ],
-    [
-     1750,
-     760
+     2554,
+     865
     ]
    ]
   },
   {
    "id": "arvore-mae",
-   "nome": "Bosque da Árvore-Mãe",
+   "nome": "Árvore-Mãe",
    "cor": "verde",
-   "descricao": "O coração vivo da cidade: uma ilhota no rio dominada por uma árvore colossal, santuário de Allihanna.",
+   "descricao": "A primeira árvore que as Oqamm pediram para crescer. Em seu tronco há um santuário de Allihanna aberto a todos os que chegam em paz.",
+   "distrito": "arvore-mae",
+   "distritoNome": "Bosque da Árvore-Mãe",
+   "rotulo": [
+    1780,
+    1570
+   ],
    "poligono": [
     [
-     1160,
-     1100
-    ],
-    [
-     1520,
-     1080
+     1765,
+     1126
     ],
     [
      1950,
@@ -163,17 +416,61 @@
      1900
     ],
     [
+     1148,
+     1665
+    ]
+   ]
+  },
+  {
+   "id": "fonte-das-raizes",
+   "nome": "Fonte das Raízes",
+   "cor": "verde",
+   "descricao": "Água que brota entre as raízes, morna de energia positiva. Feridos que repousam aqui se recuperam em dias, não semanas.",
+   "distrito": "arvore-mae",
+   "distritoNome": "Bosque da Árvore-Mãe",
+   "rotulo": [
+    1361,
+    1288
+   ],
+   "poligono": [
+    [
+     1160,
+     1100
+    ],
+    [
+     1520,
+     1080
+    ],
+    [
+     1765,
+     1126
+    ],
+    [
+     1148,
+     1665
+    ],
+    [
      1140,
      1500
     ]
    ]
   },
   {
-   "id": "mascaras",
-   "nome": "Recanto das Máscaras",
+   "id": "salao-das-mascaras",
+   "nome": "Salão das Máscaras",
    "cor": "verde",
-   "descricao": "Bosque fechado onde vivem e meditam as druidas Oqamm. Visitantes só entram a convite.",
+   "descricao": "Onde as Oqamm se reúnem, sempre sob máscaras de madeira. É aqui que se pede permissão para caçar na ilha.",
+   "distrito": "mascaras",
+   "distritoNome": "Recanto das Máscaras",
+   "rotulo": [
+    1657,
+    2250
+   ],
    "poligono": [
+    [
+     1178,
+     1939
+    ],
     [
      1160,
      1900
@@ -191,6 +488,32 @@
      2800
     ],
     [
+     1753,
+     2756
+    ]
+   ]
+  },
+  {
+   "id": "jardim-dos-silencios",
+   "nome": "Jardim dos Silêncios",
+   "cor": "amarelo",
+   "descricao": "Clareira onde ficam os caçadores que mataram além do necessário. Ninguém sabe dizer se estão presos, plantados ou em paz.",
+   "distrito": "mascaras",
+   "distritoNome": "Recanto das Máscaras",
+   "rotulo": [
+    1383,
+    2440
+   ],
+   "poligono": [
+    [
+     1178,
+     1939
+    ],
+    [
+     1753,
+     2756
+    ],
+    [
      1400,
      2650
     ],
@@ -205,10 +528,16 @@
    ]
   },
   {
-   "id": "oficinas",
-   "nome": "Oficinas da Seiva",
+   "id": "forja-do-exilio",
+   "nome": "Forja do Exílio",
    "cor": "amarelo",
-   "descricao": "Ateliês de artesãos, curtumes e o único lugar da cidade onde se trabalha metal — trazido do continente.",
+   "descricao": "Um anão de Doherimm mantém a única forja da cidade, numa cúpula de pedra trazida do continente. Conserta armas e vende anzóis aos thera.",
+   "distrito": "oficinas",
+   "distritoNome": "Oficinas da Seiva",
+   "rotulo": [
+    2227,
+    2201
+   ],
    "poligono": [
     [
      1880,
@@ -217,6 +546,44 @@
     [
      2520,
      1500
+    ],
+    [
+     2602,
+     1812
+    ],
+    [
+     2325,
+     2838
+    ],
+    [
+     2300,
+     2850
+    ],
+    [
+     1900,
+     2800
+    ],
+    [
+     1950,
+     2280
+    ]
+   ]
+  },
+  {
+   "id": "atelie-da-seda",
+   "nome": "Ateliê da Seda",
+   "cor": "amarelo",
+   "descricao": "Tecelões transformam a seda da Floresta de Seda em cordas, velas e roupas leves que secam com o vento.",
+   "distrito": "oficinas",
+   "distritoNome": "Oficinas da Seiva",
+   "rotulo": [
+    2629,
+    2470
+   ],
+   "poligono": [
+    [
+     2602,
+     1812
     ],
     [
      2620,
@@ -235,28 +602,26 @@
      2650
     ],
     [
-     2300,
-     2850
-    ],
-    [
-     1900,
-     2800
-    ],
-    [
-     1950,
-     2280
+     2325,
+     2838
     ]
    ]
   },
   {
-   "id": "currais",
+   "id": "currais-de-feras",
    "nome": "Currais de Feras",
    "cor": "vermelho",
-   "descricao": "Cercados de madeira viva onde ficam as feras capturadas à espera de embarque. Barulhento, fedorento e perigoso.",
+   "descricao": "Filhotes de lagarto-terror, galhadas e aves atrozes à espera de embarque. Às vezes, algo escapa.",
+   "distrito": "currais",
+   "distritoNome": "Currais de Feras",
+   "rotulo": [
+    1538,
+    619
+   ],
    "poligono": [
     [
-     1000,
-     700
+     1125,
+     600
     ],
     [
      1350,
@@ -269,6 +634,36 @@
     [
      1750,
      760
+    ],
+    [
+     1577,
+     1000
+    ]
+   ]
+  },
+  {
+   "id": "leilao-de-boris-maca-torta",
+   "nome": "Leilão de Bóris Maçã-Torta",
+   "cor": "vermelho",
+   "descricao": "Um comerciante de feras que paga bem e pergunta pouco. As Oqamm o observam de perto — e ele sabe disso.",
+   "distrito": "currais",
+   "distritoNome": "Currais de Feras",
+   "rotulo": [
+    1301,
+    900
+   ],
+   "poligono": [
+    [
+     1000,
+     700
+    ],
+    [
+     1125,
+     600
+    ],
+    [
+     1577,
+     1000
     ],
     [
      1520,
@@ -285,22 +680,58 @@
    ]
   },
   {
-   "id": "muralha",
-   "nome": "Muralha Viva",
+   "id": "portao-do-rio",
+   "nome": "Portão do Rio",
    "cor": "verde",
-   "descricao": "A muralha de troncos entrelaçados que protege o lado da selva, com o Portão do Rio e o Portão da Selva.",
+   "descricao": "Arco de raízes sobre o rio. Canoas thera entram com peixe e frutas; à noite, as raízes se fecham sozinhas.",
+   "distrito": "muralha",
+   "distritoNome": "Muralha Viva",
+   "rotulo": [
+    1014,
+    1505
+   ],
    "poligono": [
     [
-     1000,
-     700
-    ],
-    [
-     900,
-     1100
+     889,
+     1315
     ],
     [
      880,
      1500
+    ],
+    [
+     891,
+     1721
+    ],
+    [
+     1149,
+     1682
+    ],
+    [
+     1140,
+     1500
+    ],
+    [
+     1150,
+     1302
+    ]
+   ]
+  },
+  {
+   "id": "posto-dos-guias-thera",
+   "nome": "Posto dos Guias Thera",
+   "cor": "verde",
+   "descricao": "Velocis e ceratops oferecem seus serviços como guias e batedores em troca de ferramentas e armas de metal.",
+   "distrito": "muralha",
+   "distritoNome": "Muralha Viva",
+   "rotulo": [
+    1074,
+    1982
+   ],
+   "poligono": [
+    [
+     891,
+     1721
     ],
     [
      900,
@@ -319,8 +750,38 @@
      1900
     ],
     [
-     1140,
-     1500
+     1149,
+     1682
+    ]
+   ]
+  },
+  {
+   "id": "portao-da-selva",
+   "nome": "Portão da Selva",
+   "cor": "amarelo",
+   "descricao": "A saída para o interior. Sentinelas dahllan avisam: dali em diante, as Oqamm não pedem mais nada aos lagartos-terror.",
+   "distrito": "muralha",
+   "distritoNome": "Muralha Viva",
+   "rotulo": [
+    1053,
+    1029
+   ],
+   "poligono": [
+    [
+     1000,
+     700
+    ],
+    [
+     900,
+     1100
+    ],
+    [
+     889,
+     1315
+    ],
+    [
+     1150,
+     1302
     ],
     [
      1160,
@@ -330,18 +791,74 @@
      1250,
      820
     ]
-   ],
-   "rotulo": [
-    1030,
-    1650
    ]
   },
   {
-   "id": "selva",
-   "nome": "Selva Além da Muralha",
+   "id": "acampamento-dos-cacadores",
+   "nome": "Acampamento dos Caçadores",
    "cor": "vermelho",
-   "descricao": "O Inferno Verde começa a um passo do portão. Árvores ciclópicas, lagartos-terror e tribos que não querem visitantes.",
+   "descricao": "Caçadores que se recusam a obedecer às Oqamm. Matam para vender troféus e não gostam de testemunhas.",
+   "distrito": "selva",
+   "distritoNome": "Selva Além da Muralha",
+   "rotulo": [
+    789,
+    2564
+   ],
    "poligono": [
+    [
+     0,
+     2063
+    ],
+    [
+     896,
+     1816
+    ],
+    [
+     900,
+     1900
+    ],
+    [
+     1050,
+     2300
+    ],
+    [
+     1400,
+     2650
+    ],
+    [
+     1900,
+     2800
+    ],
+    [
+     2300,
+     2850
+    ],
+    [
+     2300,
+     3000
+    ],
+    [
+     0,
+     3000
+    ]
+   ]
+  },
+  {
+   "id": "ninho-de-deinonicos",
+   "nome": "Ninho de Deinonicos",
+   "cor": "vermelho",
+   "descricao": "Um bando de deinonicos caça os desavisados que se afastam da trilha. Os thera evitam esta parte da mata.",
+   "distrito": "selva",
+   "distritoNome": "Selva Além da Muralha",
+   "rotulo": [
+    927,
+    435
+   ],
+   "poligono": [
+    [
+     0,
+     966
+    ],
     [
      0,
      0
@@ -371,48 +888,56 @@
      1100
     ],
     [
+     891,
+     1281
+    ]
+   ]
+  },
+  {
+   "id": "trilha-das-voracis",
+   "nome": "Trilha das Voracis",
+   "cor": "vermelho",
+   "descricao": "Marcas de garras nas árvores avisam: território de uma tribo voracis que ainda vê estrangeiros como presa.",
+   "distrito": "selva",
+   "distritoNome": "Selva Além da Muralha",
+   "rotulo": [
+    393,
+    1530
+   ],
+   "poligono": [
+    [
+     0,
+     2063
+    ],
+    [
+     0,
+     966
+    ],
+    [
+     891,
+     1281
+    ],
+    [
      880,
      1500
     ],
     [
-     900,
-     1900
-    ],
-    [
-     1050,
-     2300
-    ],
-    [
-     1400,
-     2650
-    ],
-    [
-     1900,
-     2800
-    ],
-    [
-     2300,
-     2850
-    ],
-    [
-     2300,
-     3000
-    ],
-    [
-     0,
-     3000
+     896,
+     1816
     ]
-   ],
-   "rotulo": [
-    480,
-    1250
    ]
   },
   {
-   "id": "rochedo",
-   "nome": "Rochedo dos Pteros",
+   "id": "ninhal-dos-pteros",
+   "nome": "Ninhal dos Pteros",
    "cor": "verde",
-   "descricao": "Penhascos ao norte do porto onde casais de pteros fazem seus ninhos e vigiam o mar.",
+   "descricao": "Casais de pteros vigiam o mar e levam recados entre Lysianassa e as tribos da costa — em troca de peixe e respeito.",
+   "distrito": "rochedo",
+   "distritoNome": "Rochedo dos Pteros",
+   "rotulo": [
+    3019,
+    296
+   ],
    "poligono": [
     [
      2500,
@@ -442,17 +967,19 @@
      2500,
      380
     ]
-   ],
-   "rotulo": [
-    3000,
-    180
    ]
   },
   {
-   "id": "enseada",
+   "id": "enseada-da-mare-torta",
    "nome": "Enseada da Maré Torta",
    "cor": "vermelho",
-   "descricao": "Uma angra escondida ao sul, fora da muralha, onde atracam barcos que preferem não passar pela capitania.",
+   "descricao": "Contrabandistas e restos do Conclave Pirata embarcam feras e artefatos sem passar pela capitania.",
+   "distrito": "enseada",
+   "distritoNome": "Enseada da Maré Torta",
+   "rotulo": [
+    2940,
+    2778
+   ],
    "poligono": [
     [
      2300,
@@ -478,17 +1005,19 @@
      2300,
      3000
     ]
-   ],
-   "rotulo": [
-    2950,
-    2880
    ]
   },
   {
-   "id": "mar",
-   "nome": "Mar Negro",
+   "id": "rota-de-nova-malpetrim",
+   "nome": "Rota de Nova Malpetrim",
    "cor": "amarelo",
-   "descricao": "As águas escuras que separam Galrasia de Nova Malpetrim: rota de comerciantes, piratas e monstros marinhos.",
+   "descricao": "Por onde chegam os navios do continente. Tempestades, elfos-do-mar e piratas atacam quem atravessa.",
+   "distrito": "mar",
+   "distritoNome": "Mar Negro",
+   "rotulo": [
+    3730,
+    905
+   ],
    "poligono": [
     [
      3350,
@@ -500,15 +1029,11 @@
     ],
     [
      4000,
-     3000
+     1883
     ],
     [
-     3330,
-     3000
-    ],
-    [
-     3430,
-     2400
+     3468,
+     1866
     ],
     [
      3480,
@@ -526,67 +1051,103 @@
      3420,
      350
     ]
-   ],
+   ]
+  },
+  {
+   "id": "recife-das-serpentes",
+   "nome": "Recife das Serpentes",
+   "cor": "vermelho",
+   "descricao": "Pedras escuras onde serpentes marinhas descansam. Pilotos experientes dão uma volta larga.",
+   "distrito": "mar",
+   "distritoNome": "Mar Negro",
    "rotulo": [
-    3760,
-    1500
+    3704,
+    2460
+   ],
+   "poligono": [
+    [
+     4000,
+     1883
+    ],
+    [
+     4000,
+     3000
+    ],
+    [
+     3330,
+     3000
+    ],
+    [
+     3430,
+     2400
+    ],
+    [
+     3468,
+     1866
+    ]
    ]
   }
  ],
  "pins": [
   {
-   "regiao": "ancoradouro",
+   "regiao": "capitania-das-raizes",
    "nome": "Capitania das Raízes",
    "cor": "amarelo",
    "x": 2900,
    "y": 1040,
    "descricao": "Registra cada navio, cobra a taxa de atracação e anota quem desembarca. O capitão do porto é humano, de Nova Malpetrim.",
-   "id": "pin-01"
+   "id": "pin-01",
+   "distrito": "ancoradouro"
   },
   {
-   "regiao": "ancoradouro",
+   "regiao": "pier-dos-exploradores",
    "nome": "Píer dos Exploradores",
    "cor": "verde",
    "x": 2850,
    "y": 1960,
    "descricao": "Onde as expedições embarcam e desembarcam. Um quadro de raízes guarda contratos, mapas rasgados e recados de desaparecidos.",
-   "id": "pin-02"
+   "id": "pin-02",
+   "distrito": "ancoradouro"
   },
   {
-   "regiao": "ancoradouro",
+   "regiao": "taverna-da-casca-oca",
    "nome": "Taverna da Casca Oca",
    "cor": "amarelo",
    "x": 3180,
    "y": 2120,
    "descricao": "Dentro de um tronco oco à beira da lagoa. Marinheiros, caçadores e guias thera bebem lado a lado — nem sempre em paz.",
-   "id": "pin-03"
+   "id": "pin-03",
+   "distrito": "ancoradouro"
   },
   {
-   "regiao": "mercado",
+   "regiao": "mercado-das-copas",
    "nome": "Mercado das Copas",
    "cor": "amarelo",
    "x": 2250,
    "y": 1080,
    "descricao": "Frutas que ninguém no continente sabe nomear, seda da Floresta de Seda, penas, ossos e escamas. Metal vale ouro aqui.",
-   "id": "pin-04"
+   "id": "pin-04",
+   "distrito": "mercado"
   },
   {
-   "regiao": "mercado",
+   "regiao": "ervanario-seiva-doce",
    "nome": "Ervanário Seiva-Doce",
    "cor": "verde",
    "x": 2420,
    "y": 1330,
    "descricao": "Uma dahllan aposentada das Oqamm vende remédios, antídotos e ingredientes alquímicos colhidos com respeito.",
-   "id": "pin-05"
+   "id": "pin-05",
+   "distrito": "mercado"
   },
   {
-   "regiao": "mercado",
+   "regiao": "casa-de-cambio-de-malpetrim",
    "nome": "Casa de Câmbio de Malpetrim",
    "cor": "amarelo",
    "x": 1850,
    "y": 960,
    "descricao": "Agentes de mercadores de Nova Malpetrim compram espécimes vivos e financiam expedições — por uma parte do lucro.",
-   "id": "pin-06"
+   "id": "pin-06",
+   "distrito": "mercado"
   },
   {
    "regiao": "folhas-novas",
@@ -595,16 +1156,18 @@
    "x": 2350,
    "y": 620,
    "descricao": "Casas-casulo nos galhos e passarelas entre as copas. Vivem aqui colonos de todo o Reinado tentando a sorte no Mundo Perdido.",
-   "id": "pin-07"
+   "id": "pin-07",
+   "distrito": "folhas-novas"
   },
   {
-   "regiao": "folhas-novas",
+   "regiao": "posto-dos-cartografos",
    "nome": "Posto dos Cartógrafos",
    "cor": "verde",
    "x": 2780,
    "y": 640,
    "descricao": "Seguidores de Tanna-Toh compram relatos de exploradores e vendem cópias dos mapas mais confiáveis da ilha.",
-   "id": "pin-08"
+   "id": "pin-08",
+   "distrito": "folhas-novas"
   },
   {
    "regiao": "arvore-mae",
@@ -613,161 +1176,178 @@
    "x": 1660,
    "y": 1500,
    "descricao": "A primeira árvore que as Oqamm pediram para crescer. Em seu tronco há um santuário de Allihanna aberto a todos os que chegam em paz.",
-   "id": "pin-09"
+   "id": "pin-09",
+   "distrito": "arvore-mae"
   },
   {
-   "regiao": "arvore-mae",
+   "regiao": "fonte-das-raizes",
    "nome": "Fonte das Raízes",
    "cor": "verde",
    "x": 1380,
    "y": 1180,
    "descricao": "Água que brota entre as raízes, morna de energia positiva. Feridos que repousam aqui se recuperam em dias, não semanas.",
-   "id": "pin-10"
+   "id": "pin-10",
+   "distrito": "arvore-mae"
   },
   {
-   "regiao": "mascaras",
+   "regiao": "salao-das-mascaras",
    "nome": "Salão das Máscaras",
    "cor": "verde",
    "x": 1620,
    "y": 2280,
    "descricao": "Onde as Oqamm se reúnem, sempre sob máscaras de madeira. É aqui que se pede permissão para caçar na ilha.",
-   "id": "pin-11"
+   "id": "pin-11",
+   "distrito": "mascaras"
   },
   {
-   "regiao": "mascaras",
+   "regiao": "jardim-dos-silencios",
    "nome": "Jardim dos Silêncios",
    "cor": "amarelo",
    "x": 1350,
    "y": 2470,
    "descricao": "Clareira onde ficam os caçadores que mataram além do necessário. Ninguém sabe dizer se estão presos, plantados ou em paz.",
-   "id": "pin-12"
+   "id": "pin-12",
+   "distrito": "mascaras"
   },
   {
-   "regiao": "oficinas",
+   "regiao": "forja-do-exilio",
    "nome": "Forja do Exílio",
    "cor": "amarelo",
    "x": 2250,
    "y": 2380,
    "descricao": "Um anão de Doherimm mantém a única forja da cidade, numa cúpula de pedra trazida do continente. Conserta armas e vende anzóis aos thera.",
-   "id": "pin-13"
+   "id": "pin-13",
+   "distrito": "oficinas"
   },
   {
-   "regiao": "oficinas",
+   "regiao": "atelie-da-seda",
    "nome": "Ateliê da Seda",
    "cor": "amarelo",
    "x": 2620,
    "y": 2480,
    "descricao": "Tecelões transformam a seda da Floresta de Seda em cordas, velas e roupas leves que secam com o vento.",
-   "id": "pin-14"
+   "id": "pin-14",
+   "distrito": "oficinas"
   },
   {
-   "regiao": "currais",
+   "regiao": "currais-de-feras",
    "nome": "Currais de Feras",
    "cor": "vermelho",
    "x": 1500,
    "y": 700,
    "descricao": "Filhotes de lagarto-terror, galhadas e aves atrozes à espera de embarque. Às vezes, algo escapa.",
-   "id": "pin-15"
+   "id": "pin-15",
+   "distrito": "currais"
   },
   {
-   "regiao": "currais",
+   "regiao": "leilao-de-boris-maca-torta",
    "nome": "Leilão de Bóris Maçã-Torta",
    "cor": "vermelho",
    "x": 1270,
    "y": 960,
    "descricao": "Um comerciante de feras que paga bem e pergunta pouco. As Oqamm o observam de perto — e ele sabe disso.",
-   "id": "pin-16"
+   "id": "pin-16",
+   "distrito": "currais"
   },
   {
-   "regiao": "muralha",
+   "regiao": "portao-do-rio",
    "nome": "Portão do Rio",
    "cor": "verde",
    "x": 1000,
    "y": 1500,
    "descricao": "Arco de raízes sobre o rio. Canoas thera entram com peixe e frutas; à noite, as raízes se fecham sozinhas.",
-   "id": "pin-17"
+   "id": "pin-17",
+   "distrito": "muralha"
   },
   {
-   "regiao": "muralha",
+   "regiao": "posto-dos-guias-thera",
    "nome": "Posto dos Guias Thera",
    "cor": "verde",
    "x": 1060,
    "y": 1900,
    "descricao": "Velocis e ceratops oferecem seus serviços como guias e batedores em troca de ferramentas e armas de metal.",
-   "id": "pin-18"
+   "id": "pin-18",
+   "distrito": "muralha"
   },
   {
-   "regiao": "muralha",
+   "regiao": "portao-da-selva",
    "nome": "Portão da Selva",
    "cor": "amarelo",
    "x": 980,
    "y": 1120,
    "descricao": "A saída para o interior. Sentinelas dahllan avisam: dali em diante, as Oqamm não pedem mais nada aos lagartos-terror.",
-   "id": "pin-19"
+   "id": "pin-19",
+   "distrito": "muralha"
   },
   {
-   "regiao": "selva",
+   "regiao": "acampamento-dos-cacadores",
    "nome": "Acampamento dos Caçadores",
    "cor": "vermelho",
    "x": 520,
    "y": 2350,
    "descricao": "Caçadores que se recusam a obedecer às Oqamm. Matam para vender troféus e não gostam de testemunhas.",
-   "id": "pin-20"
+   "id": "pin-20",
+   "distrito": "selva"
   },
   {
-   "regiao": "selva",
+   "regiao": "ninho-de-deinonicos",
    "nome": "Ninho de Deinonicos",
    "cor": "vermelho",
    "x": 600,
    "y": 700,
    "descricao": "Um bando de deinonicos caça os desavisados que se afastam da trilha. Os thera evitam esta parte da mata.",
-   "id": "pin-21"
+   "id": "pin-21",
+   "distrito": "selva"
   },
   {
-   "regiao": "selva",
+   "regiao": "trilha-das-voracis",
    "nome": "Trilha das Voracis",
    "cor": "vermelho",
    "x": 300,
    "y": 1550,
    "descricao": "Marcas de garras nas árvores avisam: território de uma tribo voracis que ainda vê estrangeiros como presa.",
-   "id": "pin-22"
+   "id": "pin-22",
+   "distrito": "selva"
   },
   {
-   "regiao": "rochedo",
+   "regiao": "ninhal-dos-pteros",
    "nome": "Ninhal dos Pteros",
    "cor": "verde",
    "x": 3080,
    "y": 300,
    "descricao": "Casais de pteros vigiam o mar e levam recados entre Lysianassa e as tribos da costa — em troca de peixe e respeito.",
-   "id": "pin-23"
+   "id": "pin-23",
+   "distrito": "rochedo"
   },
   {
-   "regiao": "enseada",
+   "regiao": "enseada-da-mare-torta",
    "nome": "Enseada da Maré Torta",
    "cor": "vermelho",
    "x": 2880,
    "y": 2700,
    "descricao": "Contrabandistas e restos do Conclave Pirata embarcam feras e artefatos sem passar pela capitania.",
-   "id": "pin-24"
+   "id": "pin-24",
+   "distrito": "enseada"
   },
   {
-   "regiao": "mar",
+   "regiao": "rota-de-nova-malpetrim",
    "nome": "Rota de Nova Malpetrim",
    "cor": "amarelo",
    "x": 3760,
    "y": 1250,
    "descricao": "Por onde chegam os navios do continente. Tempestades, elfos-do-mar e piratas atacam quem atravessa.",
-   "id": "pin-25"
+   "id": "pin-25",
+   "distrito": "mar"
   },
   {
-   "regiao": "mar",
+   "regiao": "recife-das-serpentes",
    "nome": "Recife das Serpentes",
    "cor": "vermelho",
    "x": 3720,
    "y": 2500,
    "descricao": "Pedras escuras onde serpentes marinhas descansam. Pilotos experientes dão uma volta larga.",
-   "id": "pin-26"
+   "id": "pin-26",
+   "distrito": "mar"
   }
- ],
- "imagem": "lysianassa.webp"
+ ]
 }
