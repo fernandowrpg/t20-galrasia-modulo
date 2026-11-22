@@ -184,9 +184,10 @@ def cacador(x, y, s, tipo="ceratops", flip=False, op=0.95, cor=OCRE, lanca=True,
 
 
 def mao(x, y, s=1.0, rot=0, negativa=True, cor=OCRE):
-    forma = ('<path d="M-30,40 C-36,10 -40,-10 -34,-20 C-30,-26 -22,-22 -20,-14 L-18,-50 C-18,-60 -6,-60 -6,-50 L-4,-20 L-2,-70 '
-             'C-2,-80 10,-80 10,-70 L10,-22 L14,-62 C14,-72 26,-72 26,-62 L24,-16 L32,-46 C34,-56 46,-52 44,-42 L34,0 '
-             'C46,-6 58,-2 54,8 C40,22 30,40 24,56 C4,62 -18,58 -30,40Z"/>')
+    # Mão esquerda vista de frente: borda da palma reta à esquerda, quatro dedos e o polegar à direita (cinco ao todo).
+    forma = ('<path d="M-26,46 C-30,24 -24,4 -19,-14 L-19,-48 C-19,-60 -6,-60 -6,-48 L-4,-22 L-3,-68 '
+             'C-3,-80 10,-80 10,-68 L11,-22 L14,-60 C14,-72 27,-72 27,-60 L25,-16 L32,-44 C35,-56 47,-52 44,-40 L35,-2 '
+             'C47,-10 60,-4 55,8 C42,22 31,40 24,56 C5,62 -14,60 -26,46Z"/>')
     tr = f'translate({x},{y}) rotate({rot}) scale({s})'
     if negativa:
         mid = f"m{rnd.randint(0, 99999)}"

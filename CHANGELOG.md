@@ -1,5 +1,9 @@
 # Changelog
 
+## 1.1.2
+
+- Pintura rupestre da tela de entrada: as mãos estampadas tinham seis dedos (uma curva na lateral da palma parecia mais um dedo). Agora cada mão tem quatro dedos e o polegar. Se você já aplicou a imagem no mundo, não precisa mudar nada no Setup: o caminho é o mesmo, basta atualizar o módulo.
+
 ## 1.1.1
 
 - Janela *Tela de entrada*: o conteúdo agora rola dentro da janela, com barra de rolagem âmbar. Antes ele era cortado embaixo e o botão *Copiar o HTML da descrição* e o passo a passo ficavam inalcançáveis, mesmo com a janela maximizada.
