@@ -1,5 +1,10 @@
 # Changelog
 
+## 1.1.1
+
+- Janela *Tela de entrada*: o conteúdo agora rola dentro da janela, com barra de rolagem âmbar. Antes ele era cortado embaixo e o botão *Copiar o HTML da descrição* e o passo a passo ficavam inalcançáveis, mesmo com a janela maximizada.
+- O caminho da imagem encolhe com reticências em vez de empurrar o botão *Copiar caminho* para fora da janela; a prévia da imagem ficou mais baixa.
+
 ## 1.1.0
 
 - **Tema Galrasia para o Foundry**, a selva à noite: cabeçalho das janelas em copa esmeralda com faixa de âmbar e título em Cinzel; corpo das janelas, barra lateral, menus e dicas em folhagem escura; mensagens do chat em cartões de folha com marca âmbar (sussurros em esmeralda, críticos em verde e falhas em brasa); botões dos controles de cena, da barra lateral e da barra de macros em verde, com âmbar quando ativos.
